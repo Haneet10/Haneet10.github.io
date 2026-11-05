@@ -3,6 +3,8 @@ import "./globals.css";
 import { profile } from "@/content/profile";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { CommandMenu } from "@/components/CommandMenu";
 
 export const metadata: Metadata = {
   metadataBase: new URL(profile.site),
@@ -43,7 +45,7 @@ const jsonLd = {
   url: profile.site,
   email: `mailto:${profile.email}`,
   affiliation: { "@type": "CollegeOrUniversity", name: profile.school },
-  knowsAbout: ["Mechanical engineering", "Python", "C++", "MATLAB", "SolidWorks", "Structural analysis"],
+  knowsAbout: ["Mechanical engineering", "Python", "C++", "MATLAB", "SolidWorks", "Embedded systems", "Propulsion"],
   sameAs: [profile.links.github, profile.links.linkedin],
 };
 
@@ -64,6 +66,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Header />
         <main id="main">{children}</main>
         <Footer />
+        <CommandMenu />
+        <SmoothScroll />
       </body>
     </html>
   );

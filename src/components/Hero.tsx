@@ -4,19 +4,11 @@ import { profile } from "@/content/profile";
 import { NozzleFigure } from "./NozzleFigure";
 import { GitHubIcon, LinkedInIcon } from "./Icons";
 import { HeroIntro } from "./HeroIntro";
-
-const titleBlock: [string, string][] = [
-  ["Drawn by", profile.name],
-  ["Discipline", "Mechanical Eng. · Co-op"],
-  ["Institution", "University of Waterloo"],
-  ["Class of", profile.classOf],
-  ["Interests", "Propulsion · Robotics"],
-  ["Sheet", "00 / 06"],
-];
+import { Highlights } from "./Highlights";
 
 export function Hero() {
   return (
-    <section aria-labelledby="hero-title" className="relative overflow-hidden pt-16">
+    <section id="top" aria-labelledby="hero-title" className="relative overflow-hidden pt-16">
       <div
         className="grid-paper pointer-events-none absolute inset-0 [mask-image:radial-gradient(ellipse_80%_70%_at_70%_40%,#000_30%,transparent_80%)]"
         aria-hidden
@@ -39,8 +31,8 @@ export function Hero() {
               <span className="font-serif font-normal italic tracking-[-0.02em]">Singh</span>
             </h1>
             <p className="mt-8 max-w-md text-lg leading-relaxed text-ink-2 sm:text-xl">
-              I build across hardware, software and the numbers in between, from wheelchair ramps installed to code to
-              structural solvers that run in your browser.
+              I build things that have to work in the real world: wheelchair ramps installed to code, an arcade
+              controller machined from a door stop, and a walkie-talkie my team finished first.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-3">
               <Link
@@ -72,15 +64,7 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Title block */}
-        <dl className="grid grid-cols-2 gap-px border border-line-2 bg-line-2 sm:grid-cols-3 lg:grid-cols-6">
-          {titleBlock.map(([k, v]) => (
-            <div key={k} className="bg-paper px-4 py-3">
-              <dt className="label !text-[10px]">{k}</dt>
-              <dd className={`mt-1 text-sm ${k === "Sheet" ? "font-mono text-accent" : "text-ink"}`}>{v}</dd>
-            </div>
-          ))}
-        </dl>
+        <Highlights />
       </div>
     </section>
   );

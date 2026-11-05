@@ -158,32 +158,5 @@
       1280,
       1920
     ]
-  },
-  "truss-lab/app-dark": {
-    "width": 2880,
-    "height": 1720,
-    "widths": [
-      640,
-      1280,
-      1920
-    ]
-  },
-  "mech-lab/readme-hero": {
-    "width": 2560,
-    "height": 840,
-    "widths": [
-      640,
-      1280,
-      1920
-    ]
-  },
-  "mech-lab/modules": {
-    "width": 2560,
-    "height": 1000,
-    "widths": [
-      640,
-      1280,
-      1920
-    ]
   }
 }

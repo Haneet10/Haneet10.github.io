@@ -22,8 +22,4 @@ export default [
   { file: "pi__IMG_8620.jpg", slug: "pi-joystick", name: "joystick-detail" },
   { file: "pi__IMG_8618.jpg", slug: "pi-joystick", name: "gpio-mapping", crop: [0.3, 0.3, 0.98, 0.72] },
   { file: "pi__IMG_8627.jpg", slug: "pi-joystick", name: "arcade-config", crop: [0, 0.2, 1, 0.85] },
-  // Software
-  { file: "truss-lab-dark.png", slug: "truss-lab", name: "app-dark", quality: 85 },
-  { file: "mech-lab-hero.png", slug: "mech-lab", name: "readme-hero", quality: 85 },
-  { file: "mech-lab-modules.png", slug: "mech-lab", name: "modules", quality: 85 },
 ];

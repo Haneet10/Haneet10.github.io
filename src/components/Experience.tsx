@@ -7,7 +7,7 @@ import { Reveal } from "./Reveal";
 
 export function Experience() {
   return (
-    <section id="experience" aria-label="Experience" className="shell py-20 sm:py-28">
+    <section id="experience" aria-label="Experience" className="shell py-16 sm:py-24 lg:py-28">
       <SectionHeading
         sheet="03"
         title="Experience"

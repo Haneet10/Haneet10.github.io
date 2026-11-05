@@ -5,7 +5,7 @@ import { Reveal } from "./Reveal";
 export function Education() {
   const hs = education.highSchool;
   return (
-    <section id="education" aria-label="Education" className="shell py-20 sm:py-28">
+    <section id="education" aria-label="Education" className="shell py-16 sm:py-24 lg:py-28">
       <SectionHeading sheet="05" title="Education" note="Academic record" />
       <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
         <Reveal className="lg:col-span-7">

@@ -150,3 +150,9 @@
   .prose-sheet p + p { margin-top: 1.1em; }
   .prose-sheet strong { color: var(--ink); font-weight: 560; }
 }
+
+/* Lenis smooth scrolling */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }

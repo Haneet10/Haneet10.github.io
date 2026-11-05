@@ -6,7 +6,7 @@ import { Reveal } from "./Reveal";
 
 export function Skills() {
   return (
-    <section id="skills" aria-label="Technical skills" className="shell py-20 sm:py-28">
+    <section id="skills" aria-label="Technical skills" className="shell py-16 sm:py-24 lg:py-28">
       <SectionHeading
         sheet="04"
         title="Skills"

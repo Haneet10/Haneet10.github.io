@@ -64,10 +64,10 @@ export const skills: SkillGroup[] = [
     title: "Programming & Software",
     note: "Languages and libraries",
     items: [
-      { name: "Python", detail: "NumPy, SciPy, SymPy, Matplotlib, CustomTkinter", evidence: ["mech-lab", "pi-joystick"] },
-      { name: "C++", detail: "Arduino and embedded", evidence: ["arduino-robot"] },
+      { name: "Python", detail: "Hardware I/O, data analysis, simulation", evidence: ["pi-joystick"] },
+      { name: "C++", detail: "Arduino and embedded", evidence: ["arduino-rover"] },
       { name: "MATLAB", detail: "Physics modelling" },
-      { name: "Testing & CI", detail: "pytest, GitHub Actions", evidence: ["mech-lab", "truss-lab"] },
+      { name: "Git & GitHub", detail: "Version control, documentation" },
     ],
   },
   {
@@ -78,17 +78,17 @@ export const skills: SkillGroup[] = [
       { name: "Fusion 360" },
       { name: "AutoCAD", detail: "Mechanical and architectural layouts" },
       { name: "Engineering drawings", detail: "First/third-angle projection, section views" },
-      { name: "Machining", detail: "Drill mill, hole layout to tolerance", evidence: ["pi-joystick"] },
+      { name: "Machining", detail: "Drill mill, hole layout", evidence: ["pi-joystick"] },
     ],
   },
   {
     title: "Engineering & Electronics",
     note: "Analysis and hardware",
     items: [
-      { name: "Structural hand calcs", detail: "Beams, trusses, buckling, stress", evidence: ["mech-lab", "truss-lab"] },
-      { name: "Ramp slope calculations", detail: "Rise, run and code limits", evidence: ["accessibility-ramps"] },
-      { name: "Circuits", detail: "Breadboarding, soldering, PCB fundamentals", evidence: ["esp32-walkie-talkie", "arduino-robot"] },
-      { name: "Microcontrollers", detail: "Raspberry Pi GPIO, Arduino, ESP32", evidence: ["pi-joystick", "esp32-walkie-talkie"] },
+      { name: "Ramp slope & layout", detail: "Rise, run and code limits", evidence: ["accessibility-ramps"] },
+      { name: "Circuits", detail: "Breadboarding, soldering, PCB fundamentals", evidence: ["esp32-walkie-talkie", "arduino-rover"] },
+      { name: "Microcontrollers", detail: "Raspberry Pi GPIO, Arduino, ESP32", evidence: ["pi-joystick", "arduino-rover", "esp32-walkie-talkie"] },
+      { name: "Motor control", detail: "PWM calibration", evidence: ["arduino-rover"] },
     ],
   },
   {
@@ -102,11 +102,11 @@ export const skills: SkillGroup[] = [
     ],
   },
   {
-    title: "Development & Collaboration",
-    note: "Workflow and communication",
+    title: "Field & Collaboration",
+    note: "Working with people",
     items: [
-      { name: "Git & GitHub", detail: "Branches, pull requests, CI", evidence: ["mech-lab", "truss-lab"] },
-      { name: "Documentation", detail: "READMEs, technical write-ups" },
+      { name: "On-site service", detail: "Hospital beds, ceiling lifts, mobility equipment" },
+      { name: "Team builds", detail: "Under time pressure", evidence: ["esp32-walkie-talkie"] },
       { name: "Visual design", detail: "Canva, Photoshop, Premiere Pro" },
     ],
   },

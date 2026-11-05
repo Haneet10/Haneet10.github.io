@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { usePathname } from "next/navigation";
 import { nav, profile } from "@/content/profile";
 import { ThemeToggle } from "./ThemeToggle";
+import { JumpButton } from "./JumpButton";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -78,10 +79,12 @@ export function Header() {
             );
           })}
           <span className="mx-2 h-5 w-px bg-line" aria-hidden />
+          <JumpButton />
           <ThemeToggle />
         </nav>
 
         <div className="flex items-center gap-1 md:hidden">
+          <JumpButton compact />
           <ThemeToggle />
           <button
             type="button"
