@@ -44,13 +44,13 @@ export const projects: Project[] = [
   {
     slug: "accessibility-ramps",
     title: "Accessibility Ramp Systems",
-    tagline: "Modular aluminium wheelchair ramps, planned to code and installed at clients' homes.",
+    tagline: "Modular aluminium wheelchair ramps, built to code at clients' homes.",
     summary:
-      "A ramp is often the difference between someone leaving their home on their own or not at all. At Action Medical I planned modular aluminium ramp systems for clients, working out slope and layout so each one fit the site, then took them from flat-packed modules to finished installs.",
+      "A ramp is often the difference between someone leaving their home on their own or not at all. At Action Medical I worked on modular aluminium ramp systems for clients' homes, from the slope and layout that make each one fit its site to taking it from flat-packed modules to a finished install.",
     year: "2025–26",
     disciplines: ["Field", "Hardware"],
     context: "Action Medical Home Health",
-    role: "Layout planning, slope calculations, installation",
+    role: "Junior Mobility Systems Technician",
     tools: ["Slope & layout calculations", "Modular ramp configurator", "Site measurement", "Power tools"],
     featured: true,
     cover: {
@@ -59,7 +59,7 @@ export const projects: Project[] = [
       alt: "A finished modular aluminium ramp with handrails on both sides, running from a wooden deck across a gravel driveway",
     },
     specs: [
-      ["Systems planned", "8, spanning 12–26 ft"],
+      ["Systems", "8, spanning 12–26 ft"],
       ["Slope target", "1 : 12 maximum"],
       ["Example rise", "36 in (914 mm)"],
       ["Example footprint", "25.5 × 9.8 ft switchback"],
@@ -76,7 +76,7 @@ export const projects: Project[] = [
       {
         heading: "How it gets planned",
         body: [
-          "Accessibility ramps are held to a maximum slope of 1:12, meaning one unit of height for every twelve units of length. I worked from the measured rise at the door to the length of ramp that slope requires, then arranged standard modules (straight sections, turn platforms and landings) so the run fits the site.",
+          "Accessibility ramps are held to a maximum slope of 1:12, meaning one unit of height for every twelve units of length. Planning starts from the measured rise at the door, which sets the length of ramp that slope requires. Standard modules (straight sections, turn platforms and landings) are then arranged so the run fits the site, with footings placed to suit the property.",
           "On the install shown in the layout sheet, the door sat 36 inches up. At 1:12 that needs at least 36 feet of ramp, far longer than the space allowed. The layout folds it into a switchback, two parallel runs joined by a turn platform, so it fits in a 25.5 by 9.8 foot footprint and comes out slightly gentler than required, at 1:13.",
         ],
       },
@@ -221,7 +221,7 @@ export const projects: Project[] = [
       {
         heading: "The build",
         body: [
-          "The joystick housing, mounting plates and linkage were cut and drilled by hand on a drill mill. Hole placement matters: if the switches sit even slightly off, the stick either misses inputs or triggers two directions at once.",
+          "It started with household parts: a door stop became the spring-centred stick, and metal nails became the contacts that register each direction. The wooden housing that holds them was measured, marked and drilled on a drill mill. Hole placement matters: if the switches sit even slightly off, the stick either misses inputs or triggers two directions at once.",
           "Each direction closes a microswitch wired to its own GPIO pin on the Pi. A configuration step maps up, down, left and right to physical pins 36, 32, 35 and 12, and the fire buttons are mapped the same way.",
         ],
       },
@@ -241,13 +241,13 @@ export const projects: Project[] = [
   {
     slug: "esp32-walkie-talkie",
     title: "ESP32 Walkie-Talkie",
-    tagline: "A push-to-talk voice prototype on an ESP32, built up on a breadboard.",
+    tagline: "A working push-to-talk walkie-talkie on an ESP32. First team to finish at a workshop competition.",
     summary:
-      "A walkie-talkie prototype built around an ESP32 microcontroller, which has Bluetooth and Wi-Fi built in. A push button, an amplifier board and a small speaker are wired up on a breadboard to send and play back voice.",
+      "A working walkie-talkie built around an ESP32 microcontroller, which has Bluetooth and Wi-Fi built in. It was a team build at a timed workshop competition, and ours was the first team to finish a working model.",
     year: "2025",
     disciplines: ["Hardware"],
-    context: "Electronics build",
-    role: "Wiring and assembly",
+    context: "Workshop competition, team build",
+    role: "Team member",
     tools: ["ESP32", "Breadboard", "Audio amplifier", "Speaker", "Push button"],
     cover: {
       image: "walkie-talkie/esp32-board",
@@ -258,12 +258,14 @@ export const projects: Project[] = [
       ["Input", "Push-to-talk button"],
       ["Output", "Amplifier and speaker"],
       ["Prototyping", "Solderless breadboard"],
+      ["Result", "First team to a working model"],
     ],
     sections: [
       {
         heading: "The build",
         body: [
-          "Everything sits on one breadboard: the ESP32, a push-to-talk button, and an amplifier board driving a small speaker. The short clip shows the finished prototype on the bench.",
+          "Everything sits on one breadboard: the ESP32, a push-to-talk button, and an amplifier board driving a small speaker. Press the button to talk, release it to listen.",
+          "We built it as a team, against the clock, at a workshop competition, and were the first team to get a working model. The short clip shows it on the bench.",
         ],
       },
     ],

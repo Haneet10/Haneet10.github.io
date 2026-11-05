@@ -17,9 +17,9 @@ export function Experience() {
           <>
             Hands-on field work, design and a rocketry team.{" "}
             {profile.resume && (
-              <a href={profile.resume} className="link-underline text-ink" download>
-                Download the full résumé (PDF)
-              </a>
+              <Link href="/resume/" className="link-underline text-ink">
+                View the full résumé
+              </Link>
             )}
           </>
         }

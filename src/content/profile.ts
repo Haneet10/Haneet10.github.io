@@ -15,8 +15,8 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/haneet-singh-uw",
   },
   site: "https://haneet10.github.io",
-  // Drop a PDF at public/resume.pdf and set this to "/resume.pdf" to show the download link.
-  resume: null as string | null,
+  // The résumé PDF. Replace public/Haneet-Singh-Resume.pdf (and the page images in public/resume/) to update it.
+  resume: "/Haneet-Singh-Resume.pdf" as string | null,
   headline:
     "Mechanical engineering student at Waterloo. I build across hardware, software and the numbers in between.",
   description:
@@ -28,4 +28,5 @@ export const nav = [
   { href: "/#work", label: "Work", sheet: "02" },
   { href: "/#experience", label: "Experience", sheet: "03" },
   { href: "/#contact", label: "Contact", sheet: "06" },
+  { href: "/resume/", label: "Résumé", sheet: "R" },
 ] as const;

@@ -21,7 +21,7 @@ const principles = [
 
 const now: [string, string][] = [
   ["Studying", "1A Mechanical Engineering, Waterloo"],
-  ["Team", "Waterloo Rocketry · Propulsion"],
+  ["Team", "Waterloo Rocketry · Propulsion (2026)"],
   ["Building", "Truss Lab and Mech Lab"],
   ["Looking for", "Engineering co-op roles"],
 ];
@@ -40,7 +40,7 @@ export function About() {
           <p>
             I&apos;m a first-year <strong>Mechanical Engineering</strong> student in the co-op program at the{" "}
             <strong>University of Waterloo</strong>. In the year before university I worked as a junior technician at a
-            home-health company, servicing wheelchairs and scooters and planning accessibility ramps for people&apos;s
+            home-health company, servicing wheelchairs and scooters and installing accessibility ramps at people&apos;s
             homes. It taught me that engineering is judged by whether it works for the person using it.
           </p>
           <p>

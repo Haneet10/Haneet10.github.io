@@ -61,7 +61,7 @@ export function Header() {
         <nav aria-label="Primary" className="hidden items-center gap-1 md:flex">
           {nav.map((item) => {
             const id = item.href.split("#")[1];
-            const isActive = active === id;
+            const isActive = id ? active === id : pathname.startsWith(item.href);
             return (
               <Link
                 key={item.href}

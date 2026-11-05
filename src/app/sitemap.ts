@@ -7,6 +7,7 @@ export const dynamic = "force-static";
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
     { url: `${profile.site}/`, priority: 1 },
+    { url: `${profile.site}/resume/`, priority: 0.9 },
     ...projects.map((p) => ({ url: `${profile.site}/work/${p.slug}/`, priority: 0.8 })),
   ];
 }
