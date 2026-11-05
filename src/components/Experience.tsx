@@ -4,7 +4,6 @@ import { experience } from "@/content/resume";
 import { getProject } from "@/content/projects";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
-import { profile } from "@/content/profile";
 
 export function Experience() {
   return (
@@ -13,16 +12,7 @@ export function Experience() {
         sheet="03"
         title="Experience"
         note="Work & teams"
-        lead={
-          <>
-            Hands-on field work, design and a rocketry team.{" "}
-            {profile.resume && (
-              <Link href="/resume/" className="link-underline text-ink">
-                View the full résumé
-              </Link>
-            )}
-          </>
-        }
+        lead="Hands-on field work, design and a rocketry team."
       />
       <ol className="border-t border-ink">
         {experience.map((role, i) => {

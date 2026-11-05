@@ -10,7 +10,6 @@ The personal portfolio of **Haneet Singh**, Mechanical Engineering (Co-op) at th
 
 - **Cover**: an interactive half-section of a rocket nozzle. Move across it and it computes the local Mach number, pressure and temperature for ideal isentropic flow, live.
 - **Work**: seven projects, each with its own page: story, spec sheet, photos and a separate *For engineers* section. Two pages have working calculators (ramp slope, loan amortization).
-- **Résumé**: its own page with the PDF to download and a preview that works on phones.
 - **Experience, Skills, Education, Contact**: from the résumé. Skills link to the projects that use them instead of showing made-up percentage bars.
 
 The design idea is *the drawing set*: paper, ink, hairlines, numbered sheets and one signal-orange accent, in light and dark themes.
@@ -31,12 +30,6 @@ Everything you'd want to change is in `src/content/`:
 2. Add an entry per photo to `scripts/image-manifest.mjs`.
 3. Run `npm run images -- <that-folder>`. It writes resized WebP files to `public/images/` and strips all metadata, including GPS location.
 4. Add the project to `src/content/projects.ts`, referencing images as `"folder/name"`.
-
-**Updating the résumé:** replace `public/Haneet-Singh-Resume.pdf`, then regenerate the page previews shown on `/resume/`:
-
-```bash
-pdftoppm -r 150 -png public/Haneet-Singh-Resume.pdf public/resume/page   # then convert to page-1.webp, page-2.webp
-```
 
 ## Running locally
 
