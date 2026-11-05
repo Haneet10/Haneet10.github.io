@@ -1,0 +1,134 @@
+// Experience, skills and education. Sourced from Haneet's résumé.
+
+export type Role = {
+  org: string;
+  title: string;
+  start: string;
+  end: string;
+  location?: string;
+  summary: string;
+  points: string[];
+  tags: string[];
+  /** Related project slugs, linked from the entry. */
+  projects?: string[];
+};
+
+export const experience: Role[] = [
+  {
+    org: "Waterloo Rocketry",
+    title: "Propulsion Team",
+    start: "2026",
+    end: "Present",
+    summary: "Student design team building and launching high-power rockets. Member of the propulsion subteam.",
+    points: [],
+    tags: ["Propulsion", "Design team"],
+  },
+  {
+    org: "Action Medical Home Health",
+    title: "Junior Technician, Mobility Systems",
+    start: "Jul 2025",
+    end: "Sep 2026",
+    summary: "Service, billing and sales support for mobility equipment across homes, hospitals and nursing homes.",
+    points: [
+      "Serviced and assembled 30+ wheelchairs, walkers and scooters a week, and completed around 5 on-site service calls a week, including hospital beds and ceiling lifts.",
+      "Planned 8 modular accessibility ramp systems spanning 12–26 ft, including slope calculations and layout planning.",
+      "Prepared invoices, quotations and service records for equipment sales, repairs and installations, in a business handling over $10,000 a week at times.",
+      "Supported equipment recommendations, installation plans and service coordination for residential and healthcare clients.",
+    ],
+    tags: ["Field service", "Accessibility", "Quoting"],
+    projects: ["accessibility-ramps"],
+  },
+  {
+    org: "Purple Bean Media",
+    title: "Graphic Design Co-op Student",
+    start: "Jun 2025",
+    end: "Aug 2025",
+    summary: "Branded visual content for client social media accounts.",
+    points: [
+      "Designed social posts, stories and short videos for client accounts within established brand guidelines.",
+      "Applied typography, colour theory and layout principles in Canva, Photoshop and Premiere Pro while managing several deadlines at once.",
+    ],
+    tags: ["Brand design", "Content"],
+  },
+];
+
+export type SkillGroup = {
+  title: string;
+  note: string;
+  items: { name: string; detail?: string; evidence?: string[] }[];
+};
+
+// No proficiency bars: each skill points at the work that uses it.
+export const skills: SkillGroup[] = [
+  {
+    title: "Programming & Software",
+    note: "Languages and libraries",
+    items: [
+      { name: "Python", detail: "NumPy, SciPy, SymPy, Matplotlib, CustomTkinter", evidence: ["mech-lab", "pi-joystick"] },
+      { name: "C++", detail: "Arduino and embedded", evidence: ["arduino-robot"] },
+      { name: "MATLAB", detail: "Physics modelling" },
+      { name: "Testing & CI", detail: "pytest, GitHub Actions", evidence: ["mech-lab", "truss-lab"] },
+    ],
+  },
+  {
+    title: "Mechanical Design & CAD",
+    note: "Modelling and drawings",
+    items: [
+      { name: "SolidWorks" },
+      { name: "Fusion 360" },
+      { name: "AutoCAD", detail: "Mechanical and architectural layouts" },
+      { name: "Engineering drawings", detail: "First/third-angle projection, section views" },
+      { name: "Machining", detail: "Drill mill, hole layout to tolerance", evidence: ["pi-joystick"] },
+    ],
+  },
+  {
+    title: "Engineering & Electronics",
+    note: "Analysis and hardware",
+    items: [
+      { name: "Structural hand calcs", detail: "Beams, trusses, buckling, stress", evidence: ["mech-lab", "truss-lab"] },
+      { name: "Slope & layout planning", evidence: ["accessibility-ramps"] },
+      { name: "Circuits", detail: "Breadboarding, soldering, PCB fundamentals", evidence: ["esp32-walkie-talkie", "arduino-robot"] },
+      { name: "Microcontrollers", detail: "Raspberry Pi GPIO, Arduino, ESP32", evidence: ["pi-joystick", "esp32-walkie-talkie"] },
+    ],
+  },
+  {
+    title: "Data & Financial Tools",
+    note: "Models and analysis",
+    items: [
+      { name: "Microsoft Excel", detail: "Financial models, amortization", evidence: ["finance-model"] },
+      { name: "Registered accounts", detail: "TFSA, RRSP, FHSA planning", evidence: ["finance-model"] },
+      { name: "ETF & portfolio analysis", evidence: ["finance-model"] },
+      { name: "Personal tax (T1)", detail: "Preparation" },
+    ],
+  },
+  {
+    title: "Development & Collaboration",
+    note: "Workflow and communication",
+    items: [
+      { name: "Git & GitHub", detail: "Branches, pull requests, CI", evidence: ["mech-lab", "truss-lab"] },
+      { name: "Documentation", detail: "READMEs, technical write-ups" },
+      { name: "Visual design", detail: "Canva, Photoshop, Premiere Pro" },
+    ],
+  },
+];
+
+export const education = {
+  school: "University of Waterloo",
+  degree: "Bachelor of Applied Science, Mechanical Engineering (Co-op)",
+  period: "2026 — 2031",
+  status: "1A · Class of 2031",
+  highSchool: {
+    school: "Assumption College School",
+    credential: "Ontario Secondary School Diploma",
+    period: "2022 — 2026",
+    note: "Top six U/M course average: 98.8%",
+  },
+  involvement: [
+    "Waterloo Rocketry, propulsion team",
+    "Student Council Lead: planned campus events for communities of 500+",
+    "Model United Nations Director (2025), Distinguished Delegate (2024)",
+    "STEM Club executive, Coding Club, Waterloo math competitions",
+    "Canadian World Affairs Youth Council executive",
+    "265+ volunteer hours; peer tutor in calculus, physics, chemistry and English",
+  ],
+};

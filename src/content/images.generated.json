@@ -1,0 +1,189 @@
+{
+  "ramps/finished-run": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "ramps/finished-landing": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "ramps/finished-side": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "ramps/frame-posts": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "ramps/module-sawhorse": {
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "ramps/module-stack": {
+    "width": 1242,
+    "height": 2208,
+    "widths": [
+      640,
+      1242
+    ]
+  },
+  "ramps/layout-sheet": {
+    "width": 3871,
+    "height": 2782,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "ramps/switchback-frame": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "ramps/site-staging": {
+    "width": 3024,
+    "height": 3306,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "walkie-talkie/esp32-board": {
+    "width": 3024,
+    "height": 2822,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "walkie-talkie/breadboard": {
+    "width": 720,
+    "height": 1280,
+    "widths": [
+      640,
+      720
+    ]
+  },
+  "arduino-robot/front": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "arduino-robot/three-quarter": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "arduino-robot/sensor-board": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "pi-joystick/joystick-and-pi": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "pi-joystick/joystick-detail": {
+    "width": 3024,
+    "height": 4032,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "pi-joystick/gpio-mapping": {
+    "width": 2056,
+    "height": 1693,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "pi-joystick/arcade-config": {
+    "width": 3024,
+    "height": 2621,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "truss-lab/app-dark": {
+    "width": 2880,
+    "height": 1720,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "mech-lab/readme-hero": {
+    "width": 2560,
+    "height": 840,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  },
+  "mech-lab/modules": {
+    "width": 2560,
+    "height": 1000,
+    "widths": [
+      640,
+      1280,
+      1920
+    ]
+  }
+}
