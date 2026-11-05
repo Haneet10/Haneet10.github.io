@@ -33,7 +33,7 @@ export function About() {
       <div className="grid gap-14 lg:grid-cols-12 lg:gap-8">
         <Reveal className="lg:col-span-6">
           <p id="about-title" className="font-serif text-[clamp(2rem,4.2vw,3.4rem)] leading-[1.08] tracking-[-0.01em]">
-            I like problems you can measure, and solutions people can <em className="text-accent">stand on</em>.
+            I like problems you can measure, and solutions people can <em className="whitespace-nowrap text-accent">stand on.</em>
           </p>
         </Reveal>
         <Reveal delay={0.1} className="prose-sheet text-[17px] lg:col-span-5 lg:col-start-8">
