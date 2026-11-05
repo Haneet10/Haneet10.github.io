@@ -11,7 +11,7 @@ export function Skills() {
         sheet="04"
         title="Skills"
         note="Tools & methods"
-        lead="No percentage bars. Where a skill shows up in a project, it links to the evidence."
+        lead="Tools and methods, each tied to the project where it was used."
       />
       <div className="grid gap-px border border-line bg-line md:grid-cols-2 xl:grid-cols-3">
         {skills.map((group, gi) => (

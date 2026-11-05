@@ -59,10 +59,12 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
   const hasPhotos = Boolean(p.gallery?.length || p.video);
 
   const toc = [
-    { id: "purpose", label: "Purpose", mark: "01" },
-    { id: "approach", label: "Approach", mark: "02" },
-    { id: "result", label: "Result", mark: "03" },
-    ...(p.interactive ? [{ id: "try", label: "Try it", mark: "◆" }] : []),
+    { id: "brief", label: "Brief", mark: "01" },
+    { id: "process", label: "Process", mark: "02" },
+    { id: "failure-mode", label: "Failure mode", mark: "03" },
+    { id: "outcome", label: "Outcome", mark: "04" },
+    ...(p.next?.length ? [{ id: "rev-b", label: "Rev. B", mark: "05" }] : []),
+    ...(p.interactive ? [{ id: "model", label: "Working model", mark: "◆" }] : []),
     { id: "spec", label: p.engineers ? "Specification & detail" : "Specification", mark: "Σ" },
     ...(hasPhotos ? [{ id: "photos", label: "Photos", mark: "▣" }] : []),
   ];
@@ -101,6 +103,10 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                   <dd>{v}</dd>
                 </div>
               ))}
+              <div className="grid grid-cols-[6rem_1fr] gap-4 border-b border-line py-3 text-sm">
+                <dt className="label pt-0.5">Methods</dt>
+                <dd className="leading-relaxed text-ink-2">{p.skills.join(" · ")}</dd>
+              </div>
               <div className="grid grid-cols-[6rem_1fr] gap-4 border-b border-line py-3 text-sm">
                 <dt className="label pt-0.5">Tools</dt>
                 <dd className="flex flex-wrap gap-1.5">
@@ -170,7 +176,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
           </aside>
 
           <div className="space-y-24 lg:col-span-8 lg:col-start-5">
-            <Chapter id="purpose" n="01" title="Purpose · why it existed">
+            <Chapter id="brief" n="01" title="Brief · the problem">
               <p className="text-[clamp(1.5rem,2.6vw,2.1rem)] font-medium leading-[1.25] tracking-[-0.02em]">{p.purpose.lead}</p>
               {p.purpose.body?.map((para) => (
                 <p key={para.slice(0, 32)} className="mt-6 text-[17px] leading-[1.75] text-ink-2">
@@ -179,7 +185,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
               ))}
             </Chapter>
 
-            <Chapter id="approach" n="02" title="Approach · what I did">
+            <Chapter id="process" n="02" title="Process · how it was built">
               <ol className="relative">
                 {p.approach.map((step, i) => (
                   <li key={step.heading} className="relative grid grid-cols-[2.5rem_1fr] gap-4 pb-10 last:pb-0 sm:grid-cols-[3.5rem_1fr]">
@@ -196,7 +202,24 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
               </ol>
             </Chapter>
 
-            <Chapter id="result" n="03" title="Result · what came of it">
+            <Chapter id="failure-mode" n="03" title="Failure mode · and the fix">
+              <div className="grid gap-px border border-line-2 bg-line-2 sm:grid-cols-2">
+                <div className="bg-paper p-6 sm:p-8">
+                  <p className="label flex items-center gap-2">
+                    <span className="inline-block h-2 w-2 border border-ink" aria-hidden /> Observed
+                  </p>
+                  <p className="mt-4 text-[17px] leading-[1.65] text-ink">{p.challenge.problem}</p>
+                </div>
+                <div className="bg-paper-2 p-6 sm:p-8">
+                  <p className="label flex items-center gap-2 !text-accent">
+                    <span className="inline-block h-2 w-2 bg-accent" aria-hidden /> Resolved
+                  </p>
+                  <p className="mt-4 text-[17px] leading-[1.65] text-ink">{p.challenge.fix}</p>
+                </div>
+              </div>
+            </Chapter>
+
+            <Chapter id="outcome" n="04" title="Outcome · what it delivered">
               <p className="border-l-2 border-accent pl-5 text-[clamp(1.5rem,2.6vw,2.1rem)] font-medium leading-[1.25] tracking-[-0.02em]">
                 {p.result.lead}
               </p>
@@ -207,7 +230,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
               ))}
               {p.learned && (
                 <figure className="mt-12 bg-paper-2 p-6 sm:p-8">
-                  <figcaption className="label">What I took away</figcaption>
+                  <figcaption className="label">Note to self</figcaption>
                   <blockquote className="mt-4 font-serif text-[clamp(1.4rem,2.4vw,1.9rem)] italic leading-[1.3]">
                     &ldquo;{p.learned}&rdquo;
                   </blockquote>
@@ -215,9 +238,22 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
               )}
             </Chapter>
 
+            {p.next?.length ? (
+              <Chapter id="rev-b" n="05" title="Rev. B · what the next version changes">
+                <ol className="border-t border-ink">
+                  {p.next.map((item, i) => (
+                    <li key={item.slice(0, 32)} className="grid grid-cols-[3.5rem_1fr] gap-4 border-b border-line py-4">
+                      <span className="pt-0.5 font-mono text-[12px] text-accent">B.{i + 1}</span>
+                      <span className="text-[16px] leading-[1.65] text-ink-2">{item}</span>
+                    </li>
+                  ))}
+                </ol>
+              </Chapter>
+            ) : null}
+
             {p.interactive && (
               <Reveal as="section">
-                <div id="try" className="scroll-mt-28">
+                <div id="model" className="scroll-mt-28">
                   {p.interactive === "ramp-calculator" && <RampCalculator />}
                   {p.interactive === "amortization" && <AmortizationFigure />}
                 </div>
@@ -258,7 +294,6 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
           <section id="photos" aria-label="Photos" className="scroll-mt-24 border-t border-line pb-24 pt-10">
             <div className="mb-8 flex items-baseline justify-between">
               <p className="label">Photos · {(p.gallery?.length ?? 0) + (p.video ? 1 : 0)}</p>
-              <p className="label hidden sm:block">Select to enlarge · ← → to browse</p>
             </div>
             <Gallery figures={p.gallery ?? []} video={p.video} sheet={sheet} />
           </section>

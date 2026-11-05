@@ -220,8 +220,7 @@ export function NozzleFigure() {
         ))}
       </figcaption>
       <p className="mt-3 font-mono text-[10px] uppercase tracking-[0.12em] text-faint">
-        Fig. 1 · C–D nozzle study · ideal isentropic flow, <span className="normal-case">γ</span> = 1.4 · <span className="hidden sm:inline">move across the drawing to probe</span>
-        <span className="sm:hidden">drag across the drawing to probe</span>
+        Fig. 1 · C–D nozzle study · ideal isentropic flow, <span className="normal-case">γ</span> = 1.4
       </p>
     </figure>
   );

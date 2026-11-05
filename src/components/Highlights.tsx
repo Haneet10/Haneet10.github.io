@@ -8,7 +8,7 @@ export function Highlights() {
     <div className="border border-line-2">
       <div className="flex items-center justify-between border-b border-line-2 px-4 py-2.5">
         <span className="label !text-[10px]">Key results</span>
-        <span className="label hidden !text-[10px] sm:block">Select any figure for the evidence</span>
+        <span className="label hidden !text-[10px] sm:block">2024 — 2026</span>
       </div>
       <ul className="grid grid-cols-2 gap-px bg-line-2 lg:grid-cols-4">
         {highlights.map((h) => (

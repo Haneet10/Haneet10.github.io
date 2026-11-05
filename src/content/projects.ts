@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────
 // Projects. Add a new one by appending an object to `projects`.
-// Every project tells the same story: Purpose → Approach → Result.
+// Every project reads as a sheet: Brief → Process → Failure mode → Outcome → Rev. B.
 // Images are referenced by key ("folder/name"): add photos to
 // scripts/image-manifest.mjs and run `npm run images -- <source-dir>`.
 // Every fact here comes from Haneet's résumé, his answers, or the photos.
@@ -26,6 +26,8 @@ export type Project = {
   context: string;
   role: string;
   tools: string[];
+  /** Skills line shown under the title. */
+  skills: string[];
   cover?: Figure;
   links?: { label: string; href: string; kind: "github" | "live" }[];
   featured?: boolean;
@@ -35,10 +37,14 @@ export type Project = {
   purpose: { lead: string; body?: string[] };
   /** What was done, in a few short steps. */
   approach: { heading: string; body: string }[];
+  /** The hardest problem and how it was solved. */
+  challenge: { problem: string; fix: string };
   /** What it achieved. */
   result: { lead: string; body?: string[] };
   /** One honest takeaway. */
   learned?: string;
+  /** What the next version would change. Forward-looking, not claims. */
+  next?: string[];
   specs: [string, string][];
   /** Technical detail, kept apart so the main story stays readable. */
   engineers?: string[];
@@ -52,12 +58,13 @@ export const projects: Project[] = [
   {
     slug: "accessibility-ramps",
     title: "Accessibility Ramp Systems",
-    tagline: "Modular aluminium wheelchair ramps, built to code at clients' homes.",
+    tagline: "Modular aluminium wheelchair ramps, configured and installed to code at clients' homes.",
     year: "2025–26",
     disciplines: ["Field", "Hardware"],
     context: "Action Medical Home Health",
     role: "Junior Mobility Systems Technician",
-    tools: ["Slope calculations", "Layout planning", "Site measurement", "Footing placement"],
+    tools: ["Layout sheets", "Tape & level", "Impact driver", "Adjustable legs"],
+    skills: ["Slope & run calculations", "Modular layout planning", "Site measurement", "Footing placement", "Field installation", "Accessibility code"],
     featured: true,
     cover: {
       image: "ramps/finished-run",
@@ -72,23 +79,31 @@ export const projects: Project[] = [
     purpose: {
       lead: "A ramp is often the difference between someone leaving their home on their own, or not at all.",
       body: [
-        "Every home is different: the height of the door, the room in the driveway, where the steps come down. A ramp that is too steep is unsafe in a wheelchair, and one that is too long won't fit on the property. Each install has to satisfy both.",
+        "Every home is different: the height of the door, the room in the driveway, where the steps come down. A ramp that is too steep is unsafe in a wheelchair, and one that is too long won't fit on the property. Each install has to satisfy both, and it has to survive years of weather and daily use.",
       ],
     },
     approach: [
       {
-        heading: "Measure the rise",
-        body: "Everything starts from the height of the door. At the 1:12 maximum slope, every inch of rise needs a foot of ramp, so a 36 in rise needs at least 36 ft.",
+        heading: "Measure the rise and the site",
+        body: "Took the vertical rise from grade to the door threshold and walked the usable ground around each entrance. At the 1:12 code maximum every inch of rise needs a foot of ramp, so a 36 in rise needs at least 36 ft of run before a single landing is added.",
       },
       {
-        heading: "Fit it to the site",
-        body: "Standard modules (straight runs, turn platforms, landings) are arranged so that length fits the property. On the switchback shown here, two parallel runs joined by turn platforms fold a 39 ft ramp into a 25.5 × 9.8 ft footprint.",
+        heading: "Configure the layout",
+        body: "Broke the required run into standard modules: straight sections, turn platforms and landings. Checked the selected slope against the actual slope on the layout sheet and optimized the arrangement so it fit the property without crowding the driveway or blocking access.",
       },
       {
-        heading: "Build it level",
-        body: "Footings and adjustable legs go in first and get levelled, then the deck sections, platforms and continuous handrails.",
+        heading: "Plan the fabrication",
+        body: "Turned each layout into a parts list (on the switchback: M1 × 9, M3 × 2, M4 × 1, M6 × 1, M7 × 2) and a staging plan, so modules, legs and handrails came off the truck in the order they went in.",
+      },
+      {
+        heading: "Set footings and level",
+        body: "Coordinated structural footing placement against the existing property: decks, steps, soft ground and gravel. Set the adjustable legs, levelled the frame, then installed the deck sections, platforms and continuous handrails.",
       },
     ],
+    challenge: {
+      problem: "A 36 in rise needs at least 36 ft of ramp at code slope, and the side yard was nowhere near that long in a straight line.",
+      fix: "Fold it. Two parallel runs joined by turn platforms pack about 39 ft of ramp into a 25.5 × 9.8 ft footprint, and the final layout came out at 1:13, gentler than the 1:12 limit.",
+    },
     result: {
       lead: "Clients got step-free access to their homes, on ramps at or below the code slope limit.",
       body: [
@@ -96,11 +111,16 @@ export const projects: Project[] = [
       ],
     },
     learned: "Engineering is judged by whether it works for the person using it, not by how it looks on the layout sheet.",
+    next: [
+      "Model the site and the module layout in CAD before the first visit, so clearances and footing points are checked before anything is unloaded.",
+      "Survey ground slope at every footing on the measuring visit, so leg heights can be preset instead of set by trial on site.",
+    ],
     specs: [
       ["Systems", "8, spanning 12–26 ft"],
       ["Slope limit", "1 : 12 maximum"],
       ["Example rise", "36 in (914 mm)"],
       ["Example footprint", "25.5 × 9.8 ft switchback"],
+      ["Example slope", "1 : 13.0 (≈ 4.4°)"],
       ["Material", "Modular aluminium, perforated deck"],
     ],
     engineers: [
@@ -111,7 +131,7 @@ export const projects: Project[] = [
     gallery: [
       { image: "ramps/layout-sheet", alt: "Printed plan view of a switchback ramp layout: 25.5 ft long, 9.8 ft wide, 36 inch target rise, 1:12 selected slope, 1:13 actual", caption: "Layout sheet, switchback install (Aug 2025). 36 in rise, 1:13 actual slope." },
       { image: "ramps/switchback-frame", alt: "Aluminium ramp frame and support legs being assembled beside a house", caption: "Frame and legs going in on the switchback." },
-      { image: "ramps/site-staging", alt: "Tool bags and flat-packed ramp boxes staged in a driveway", caption: "Staging the modules and tools." },
+      { image: "ramps/site-staging", alt: "Tool bags and flat-packed ramp boxes staged in a driveway", caption: "Modules and tools staged in install order." },
       { image: "ramps/frame-posts", alt: "Ramp support posts and landing frame set out in a field", caption: "Second install (Mar 2026): posts and landing frame." },
       { image: "ramps/module-sawhorse", alt: "A perforated aluminium deck module resting on sawhorses beside a wooden deck", caption: "Deck module ready to set." },
       { image: "ramps/finished-landing", alt: "Finished ramp seen from the bottom with continuous handrails", caption: "Finished: continuous handrails both sides." },
@@ -121,12 +141,13 @@ export const projects: Project[] = [
   {
     slug: "pi-joystick",
     title: "Raspberry Pi Arcade Joystick",
-    tagline: "An arcade controller made from a door stop, nails and wood, wired straight into a Raspberry Pi.",
+    tagline: "An arcade controller made from a door stop, nails and wood, wired straight into a Raspberry Pi's GPIO.",
     year: "2026",
     disciplines: ["Hardware", "Software"],
     context: "Personal build",
     role: "Design, machining, wiring, input software",
     tools: ["Raspberry Pi", "Python", "GPIO", "Drill mill"],
+    skills: ["Drill-mill machining", "Hole layout", "GPIO wiring", "Python", "Input debouncing", "Hardware–software debugging"],
     featured: true,
     cover: {
       image: "pi-joystick/joystick-and-pi",
@@ -141,31 +162,46 @@ export const projects: Project[] = [
     purpose: {
       lead: "Take an idea from concept to a working prototype, using household parts instead of a kit.",
       body: [
-        "Building the controller from scratch meant solving the mechanical, electrical and software problems myself, and seeing how each one affects the others.",
+        "A store-bought joystick hides every interesting problem inside a plastic shell. Building one from scratch meant solving the mechanical, electrical and software sides myself, and seeing how a decision on one side shows up on the others.",
       ],
     },
     approach: [
       {
+        heading: "Design around what was on hand",
+        body: "A door stop's spring became a self-centring stick. Metal nails became the four direction contacts: push the stick, it touches a nail, the circuit closes. No kit, no microswitches.",
+      },
+      {
         heading: "Machine the housing",
-        body: "A door stop became the spring-centred stick and metal nails became the contacts for each direction. The wooden housing was measured, marked and drilled on a drill mill so every contact sat exactly where it needed to.",
+        body: "Measured, marked and drilled the wooden housing on a drill mill so each nail sits where the stick meets it at the end of its throw, equally in every direction.",
       },
       {
         heading: "Wire it to the Pi",
-        body: "Each direction and the fire button connect to their own GPIO pin. Up, down, left and right map to physical pins 36, 32, 35 and 12.",
+        body: "Each direction and the fire button run to their own GPIO input. Up, down, left and right map to physical pins 36, 32, 35 and 12, and the Pi sits in its own wooden case beside the stick.",
       },
       {
-        heading: "Make it feel right",
-        body: "Mechanical contacts bounce, sending a burst of signals for one press. I refined the debouncing in the Python input script and the signal routing until false inputs and lag were gone.",
+        heading: "Write the input layer",
+        body: "A Python script reads the pins and routes each one to a controller input the arcade front end understands, so the stick and button bind like any other gamepad.",
       },
     ],
+    challenge: {
+      problem: "Nail contacts bounce. One push of the stick registered as a burst of presses, so movement in game was jittery and laggy.",
+      fix: "Refined the debounce timing in the Python input script and cleaned up the signal routing until each push registered exactly once, with no visible lag.",
+    },
     result: {
       lead: "A fully working arcade controller, used to play Tetris and Aliens.",
+      body: ["Every part of it, from the stick's spring to the input script, was designed, made or written by hand."],
     },
     learned: "Small changes in the code had a butterfly effect on how the whole system responded. Hardware and software can't be debugged in isolation.",
+    next: [
+      "Swap the nails for microswitches, so the contacts stop wearing and bouncing.",
+      "Model the housing in SolidWorks and cut it on a CNC or 3D printer for a repeatable fit.",
+      "Add a second action button for two-button games.",
+    ],
     specs: [
       ["Controller", "Raspberry Pi, cased"],
       ["Inputs", "4 directions + fire button"],
       ["Interface", "Direct GPIO (pins 36, 32, 35, 12)"],
+      ["Software", "Python input script"],
       ["Fabrication", "Drill-milled wooden housing"],
       ["Tested on", "Tetris and Aliens"],
     ],
@@ -182,8 +218,9 @@ export const projects: Project[] = [
     year: "2025",
     disciplines: ["Hardware"],
     context: "Workshop competition, team build",
-    role: "Team member",
+    role: "Team member: circuit build and testing",
     tools: ["ESP32", "Breadboard", "Audio amplifier", "Speaker"],
+    skills: ["ESP32", "Breadboard prototyping", "Audio amplification", "Rapid iteration", "Teamwork under time pressure"],
     featured: true,
     cover: {
       image: "walkie-talkie/esp32-board",
@@ -195,23 +232,41 @@ export const projects: Project[] = [
     ],
     purpose: {
       lead: "A timed workshop competition: turn a bag of parts into a walkie-talkie that actually works, before anyone else.",
+      body: ["Every team started with the same parts and the same clock. The only thing that counted was a working model."],
     },
     approach: [
       {
         heading: "Build around the ESP32",
-        body: "The ESP32 microcontroller has Bluetooth and Wi-Fi built in, so it handles the wireless side. A push-to-talk button, an amplifier board and a small speaker complete the circuit.",
+        body: "The ESP32 microcontroller has Wi-Fi and Bluetooth built in, so it handles the wireless link and the audio processing on one chip.",
+      },
+      {
+        heading: "Drive the speaker",
+        body: "A microcontroller pin can't drive a speaker on its own, so the audio goes through a small amplifier board to a compact speaker.",
+      },
+      {
+        heading: "Add push-to-talk",
+        body: "A single button switches the unit between talking and listening: hold to talk, release to hear the other side.",
       },
       {
         heading: "Keep it on one board",
-        body: "Everything sits on a single solderless breadboard, so the team could rewire and test quickly under time pressure.",
+        body: "Everything sits on one solderless breadboard, so the circuit stayed easy to read and quick to change.",
       },
     ],
+    challenge: {
+      problem: "A hard time limit, with every other team racing for the same finish line. Any fix that took minutes could cost the win.",
+      fix: "No soldering. With the whole circuit on one breadboard, every correction was a wire moved and a re-test in seconds.",
+    },
     result: {
       lead: "Ours was the first team to finish a working model.",
       body: ["Press the button to talk, release it to listen. The short clip shows it on the bench."],
     },
+    learned: "Under a deadline, the design that's fastest to change beats the one that's neatest on paper.",
+    next: [
+      "Move the circuit to a soldered perfboard with a battery, so it works away from a laptop.",
+      "Design a handheld enclosure in Fusion 360 and 3D-print it.",
+    ],
     specs: [
-      ["Microcontroller", "ESP32 (Bluetooth + Wi-Fi)"],
+      ["Microcontroller", "ESP32 (Wi-Fi + Bluetooth)"],
       ["Input", "Push-to-talk button"],
       ["Output", "Amplifier and speaker"],
       ["Prototyping", "Solderless breadboard"],
@@ -225,54 +280,69 @@ export const projects: Project[] = [
   {
     slug: "arduino-rover",
     title: "Arduino Rover",
-    tagline: "A two-motor rover programmed in C++ to drive itself along shapes, tuned until it stopped drifting.",
+    tagline: "A two-motor Arduino rover in C++ with two modes: drive a set shape, or follow a line on the floor.",
     year: "2024",
     disciplines: ["Hardware", "Software"],
     context: "Personal build",
-    role: "Electronics, soldering, programming",
-    tools: ["Arduino Uno", "C++", "PWM", "Perfboard", "Soldering"],
+    role: "Build, soldering, programming, testing",
+    tools: ["Arduino Uno", "C++", "IR sensors", "Perfboard", "Soldering iron"],
+    skills: ["C++ / Arduino", "PWM motor control", "IR line sensing", "Soldering", "Perfboard layout", "Calibration testing"],
     cover: {
       image: "arduino-robot/front",
       alt: "A two-wheel robot with an Arduino Uno and a hand-soldered perfboard on a hardboard chassis",
     },
     outcomes: [
+      { value: "2", label: "driving modes: shapes and line following" },
       { value: "2", label: "motors matched in software" },
       { value: "0", label: "parts replaced to fix the drift" },
     ],
     purpose: {
-      lead: "Program a rover to drive itself along geometric shapes, on motors and wheels that were far from ideal.",
+      lead: "Make a rover drive itself accurately, on motors and wheels that were far from ideal.",
       body: [
-        "The two motors didn't run at the same speed and the wheels were substandard. Swapping parts wasn't an option, so the problem had to be solved in the design and the code.",
+        "The two motors didn't run at the same speed and the wheels were substandard. Swapping parts wasn't an option, so every problem had to be solved in the build and the code.",
       ],
     },
     approach: [
       {
         heading: "Build the drive",
-        body: "Two DC gearmotors and a caster on a hardboard chassis, driven by an Arduino Uno through a motor driver circuit soldered by hand on perfboard.",
+        body: "Two DC gearmotors and a caster on a hardboard chassis, with an Arduino Uno on top as the controller.",
       },
       {
-        heading: "Find the drift",
-        body: "Repeated test runs showed the rover gradually wandering off its path, from uneven motor output, gearbox slop and wheel friction.",
+        heading: "Solder the driver board",
+        body: "Hand-soldered the motor driver circuit on perfboard, so the Arduino's low-power pins can switch the current the motors actually need.",
       },
       {
-        heading: "Correct it in code",
-        body: "I adjusted the power sent to each motor (PWM duty cycle), the turn timing and the movement sequences until both sides matched and the shapes came out consistent.",
+        heading: "Shape mode",
+        body: "Programmed timed movement sequences in C++ (straight runs and turns of set duration) so the rover traces geometric shapes on its own.",
+      },
+      {
+        heading: "Line-following mode",
+        body: "Two downward-facing IR sensors under the front read the floor. When one side sees the line, the code slows that side's motor to steer back over it.",
       },
     ],
+    challenge: {
+      problem: "Repeated test runs showed the rover wandering off its path: uneven motor output, gearbox slop and wheel friction meant equal power never gave equal speed.",
+      fix: "Calibrated each motor's PWM duty cycle, then adjusted turn timing and the movement sequences run by run until both sides matched and the shapes came out consistent.",
+    },
     result: {
-      lead: "A rover that draws its shapes consistently, on the same imperfect hardware it started with.",
+      lead: "A rover that draws its shapes consistently and follows a line, on the same imperfect hardware it started with.",
     },
     learned: "When the ideal parts aren't available, adapt the design instead of starting over. It also gave me a real feel for how friction and motor differences affect a physical system.",
+    next: [
+      "Add wheel encoders for closed-loop speed control instead of fixed PWM offsets.",
+      "Use PID steering in line-following mode for smoother, faster tracking.",
+    ],
     specs: [
       ["Controller", "Arduino Uno"],
       ["Drive", "Two DC gearmotors + caster"],
-      ["Electronics", "Hand-soldered perfboard"],
+      ["Electronics", "Hand-soldered perfboard driver"],
+      ["Sensing", "2 × downward IR sensors"],
       ["Language", "C++"],
-      ["Control", "Open-loop, PWM-calibrated"],
+      ["Control", "PWM-calibrated, two modes"],
     ],
     gallery: [
       { image: "arduino-robot/three-quarter", alt: "Three-quarter view of the Arduino rover", caption: "Arduino Uno on the hardboard chassis." },
-      { image: "arduino-robot/sensor-board", alt: "Hand-soldered perfboard with components under the chassis", caption: "Hand-soldered board under the chassis." },
+      { image: "arduino-robot/sensor-board", alt: "Hand-soldered perfboard and downward-facing sensors under the chassis", caption: "Hand-soldered board and line sensors under the chassis." },
     ],
   },
   {
@@ -284,6 +354,7 @@ export const projects: Project[] = [
     context: "Personal project",
     role: "Modelling and analysis",
     tools: ["Microsoft Excel", "Monarch Money"],
+    skills: ["Excel modelling", "Compound growth", "Marginal tax analysis", "ETF analysis", "Amortization"],
     outcomes: [
       { value: "3", label: "registered account types compared" },
       { value: "3", label: "return horizons per fund (1, 3, 5 yr)" },
@@ -308,9 +379,17 @@ export const projects: Project[] = [
         body: "Built amortization models comparing alternative ODSP repayment schedules: principal reduction, timeline and cumulative interest under different rates and cash flows.",
       },
     ],
+    challenge: {
+      problem: "TFSA, RRSP and FHSA are taxed differently going in and coming out, so their balances can't be compared at face value.",
+      fix: "Modelled each account with its own tax treatment and the shift in marginal bracket over time, so the three could be compared on the same footing.",
+    },
     result: {
       lead: "A reusable model that turns each of these questions into numbers that can be compared side by side.",
     },
+    next: [
+      "Replace the single growth rate with a range of return scenarios.",
+      "Rebuild the model in Python so scenarios can be swept automatically.",
+    ],
     specs: [
       ["Accounts modelled", "TFSA, RRSP, FHSA"],
       ["Inputs", "Contributions, growth, tax brackets, allocation"],

@@ -10,7 +10,7 @@ The personal portfolio of **Haneet Singh**, Mechanical Engineering (Co-op) at th
 
 - **Cover**: an interactive half-section of a rocket nozzle. Move across it and it computes the local Mach number, pressure and temperature for ideal isentropic flow, live.
 - **Key results**: four headline numbers under the cover, each linking to the work behind it.
-- **Work**: five projects. Each page is told the same way: *Purpose* (why it existed), *Approach* (what I did, step by step), *Result* (what came of it and what I took away), then a spec sheet, photos and a *For engineers* section. Two pages have working calculators (ramp slope, loan amortization).
+- **Work**: five projects. Each page reads like a drawing sheet: *Brief* (the problem), *Process* (how it was built, step by step), *Failure mode* (what went wrong and the fix), *Outcome*, and *Rev. B* (what the next version changes), then a spec sheet, photos and a *For engineers* section. Two pages have working calculators (ramp slope, loan amortization).
 - **Experience, Skills, Education, Contact**. Skills link to the projects that use them instead of showing made-up percentage bars.
 - **Navigation**: press ⌘K / Ctrl+K (or the *Jump to* button) to jump to any section, project or link. Wide screens also get a sheet index on the right edge, and project pages have an "On this sheet" contents list.
 
@@ -23,7 +23,7 @@ Everything you'd want to change is in `src/content/`:
 | File | What it holds |
 |---|---|
 | `profile.ts` | Name, email, links, nav, key results |
-| `projects.ts` | Every project, with `purpose`, `approach`, `result` and `outcomes`. Add one by appending an object |
+| `projects.ts` | Every project, with `skills`, `purpose`, `approach`, `challenge`, `result`, `next` and `outcomes`. Add one by appending an object |
 | `resume.ts` | Experience (Waterloo Rocketry work goes here as it happens), skills, education |
 
 **Adding a project with photos**

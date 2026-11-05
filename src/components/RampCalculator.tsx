@@ -29,7 +29,7 @@ export function RampCalculator() {
     <div className="border border-line">
       <div className="flex items-center justify-between border-b border-line px-5 py-3">
         <p className="label flex items-center gap-3">
-          <span className="text-accent">◆</span> Try it · ramp length calculator
+          <span className="text-accent">◆</span> Working model · ramp length
         </p>
         <p className="label hidden sm:block">True scale</p>
       </div>

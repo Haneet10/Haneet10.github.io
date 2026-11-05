@@ -14,7 +14,7 @@ export function Work() {
         sheet="02"
         title="Work"
         note={`${String(projects.length).padStart(2, "0")} projects`}
-        lead="Every project is told the same way: why it existed, what I did, and what came of it. Select one for the full sheet with photos and technical detail."
+        lead="Five builds across the field, the bench and the spreadsheet. Each sheet covers the brief, the process, what failed, and what it delivered."
       />
 
       <div className="space-y-24 sm:space-y-32">
@@ -26,7 +26,7 @@ export function Work() {
                 <Link
                   href={`/work/${p.slug}/`}
                   className={`group block lg:col-span-7 ${flip ? "lg:order-2" : ""}`}
-                  aria-label={`${p.title}: read the full sheet`}
+                  aria-label={`${p.title}: full project sheet`}
                 >
                   <div className="ticks relative aspect-[4/3] overflow-hidden bg-paper-2">
                     {p.cover && (
@@ -43,7 +43,7 @@ export function Work() {
                       Fig. 2.{i + 1}
                     </span>
                     <span className="absolute bottom-3 right-3 inline-flex translate-y-2 items-center gap-1.5 bg-ink px-3 py-1.5 text-xs font-medium text-paper opacity-0 transition-all duration-500 ease-[var(--ease-draft)] group-hover:translate-y-0 group-hover:opacity-100">
-                      Open sheet <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
+                      Sheet 02.0{i + 1} <ArrowUpRight className="h-3.5 w-3.5" aria-hidden />
                     </span>
                   </div>
                 </Link>
@@ -64,11 +64,11 @@ export function Work() {
 
                   <dl className="mt-8 space-y-5 border-t border-line pt-6">
                     <div className="grid grid-cols-[4.5rem_1fr] gap-4">
-                      <dt className="label pt-1">Why</dt>
+                      <dt className="label pt-1">Brief</dt>
                       <dd className="text-[15px] leading-relaxed text-ink-2">{p.purpose.lead}</dd>
                     </div>
                     <div className="grid grid-cols-[4.5rem_1fr] gap-4">
-                      <dt className="label pt-1 !text-accent">Result</dt>
+                      <dt className="label pt-1 !text-accent">Outcome</dt>
                       <dd className="text-[15px] leading-relaxed text-ink">{p.result.lead}</dd>
                     </div>
                   </dl>
@@ -89,7 +89,7 @@ export function Work() {
                   </dl>
 
                   <Link href={`/work/${p.slug}/`} className="group mt-8 inline-flex items-center gap-2 text-sm font-medium">
-                    <span className="link-underline">Read the full sheet</span>
+                    <span className="link-underline">Full project sheet</span>
                     <ArrowUpRight className="h-4 w-4 text-accent transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
                   </Link>
                 </div>

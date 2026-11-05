@@ -43,7 +43,7 @@ export function AmortizationFigure() {
     <div className="border border-line">
       <div className="flex items-center justify-between border-b border-line px-5 py-3">
         <p className="label flex items-center gap-3">
-          <span className="text-accent">◆</span> Try it · amortization schedule
+          <span className="text-accent">◆</span> Working model · amortization schedule
         </p>
         <p className="label hidden sm:block">Your numbers</p>
       </div>
