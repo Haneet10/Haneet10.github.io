@@ -37,8 +37,8 @@ export type Project = {
   purpose: { lead: string; body?: string[] };
   /** What was done, in a few short steps. */
   approach: { heading: string; body: string }[];
-  /** The hardest problem and how it was solved. */
-  challenge: { problem: string; fix: string };
+  /** What went wrong and how it was solved. Real events only. */
+  challenges: { title: string; problem: string; fix: string }[];
   /** What it achieved. */
   result: { lead: string; body?: string[] };
   /** One honest takeaway. */
@@ -100,10 +100,13 @@ export const projects: Project[] = [
         body: "Coordinated structural footing placement against the existing property: decks, steps, soft ground and gravel. Set the adjustable legs, levelled the frame, then installed the deck sections, platforms and continuous handrails.",
       },
     ],
-    challenge: {
-      problem: "A 36 in rise needs at least 36 ft of ramp at code slope, and the side yard was nowhere near that long in a straight line.",
-      fix: "Fold it. Two parallel runs joined by turn platforms pack about 39 ft of ramp into a 25.5 × 9.8 ft footprint, and the final layout came out at 1:13, gentler than the 1:12 limit.",
-    },
+    challenges: [
+      {
+        title: "Not enough yard",
+        problem: "A 36 in rise needs at least 36 ft of ramp at code slope, and the side yard was nowhere near that long in a straight line.",
+        fix: "Fold it. Two parallel runs joined by turn platforms pack about 39 ft of ramp into a 25.5 × 9.8 ft footprint, and the final layout came out at 1:13, gentler than the 1:12 limit.",
+      },
+    ],
     result: {
       lead: "Clients got step-free access to their homes, on ramps at or below the code slope limit.",
       body: [
@@ -144,7 +147,7 @@ export const projects: Project[] = [
     tagline: "An arcade controller made from a door stop, nails and wood, wired straight into a Raspberry Pi's GPIO.",
     year: "2026",
     disciplines: ["Hardware", "Software"],
-    context: "Personal build",
+    context: "Two-week project, finished in under one",
     role: "Design, machining, wiring, input software",
     tools: ["Raspberry Pi", "Python", "GPIO", "Drill mill"],
     skills: ["Drill-mill machining", "Hole layout", "GPIO wiring", "Python", "Input debouncing", "Hardware–software debugging"],
@@ -156,7 +159,7 @@ export const projects: Project[] = [
     },
     outcomes: [
       { value: "4", label: "directions, one GPIO pin each" },
-      { value: "2", label: "arcade games played on it" },
+      { value: "< 1 wk", label: "to finish a two-week build" },
       { value: "0", label: "off-the-shelf joystick parts" },
     ],
     purpose: {
@@ -183,12 +186,15 @@ export const projects: Project[] = [
         body: "A Python script reads the pins and routes each one to a controller input the arcade front end understands, so the stick and button bind like any other gamepad.",
       },
     ],
-    challenge: {
-      problem: "Nail contacts bounce. One push of the stick registered as a burst of presses, so movement in game was jittery and laggy.",
-      fix: "Refined the debounce timing in the Python input script and cleaned up the signal routing until each push registered exactly once, with no visible lag.",
-    },
+    challenges: [
+      {
+        title: "Contact bounce",
+        problem: "Nail contacts bounce. One push of the stick registered as a burst of presses, so movement in game was jittery and laggy.",
+        fix: "Refined the debounce timing in the Python input script and cleaned up the signal routing until each push registered exactly once, with no visible lag.",
+      },
+    ],
     result: {
-      lead: "A fully working arcade controller, used to play Tetris and Aliens.",
+      lead: "A fully working arcade controller, used to play Tetris and Aliens, finished in under a week on a two-week timeline.",
       body: ["Every part of it, from the stick's spring to the input script, was designed, made or written by hand."],
     },
     learned: "Small changes in the code had a butterfly effect on how the whole system responded. Hardware and software can't be debugged in isolation.",
@@ -252,10 +258,13 @@ export const projects: Project[] = [
         body: "Everything sits on one solderless breadboard, so the circuit stayed easy to read and quick to change.",
       },
     ],
-    challenge: {
-      problem: "A hard time limit, with every other team racing for the same finish line. Any fix that took minutes could cost the win.",
-      fix: "No soldering. With the whole circuit on one breadboard, every correction was a wire moved and a re-test in seconds.",
-    },
+    challenges: [
+      {
+        title: "The clock",
+        problem: "A hard time limit, with every other team racing for the same finish line. Any fix that took minutes could cost the win.",
+        fix: "No soldering. With the whole circuit on one breadboard, every correction was a wire moved and a re-test in seconds.",
+      },
+    ],
     result: {
       lead: "Ours was the first team to finish a working model.",
       body: ["Press the button to talk, release it to listen. The short clip shows it on the bench."],
@@ -283,8 +292,8 @@ export const projects: Project[] = [
     tagline: "A two-motor Arduino rover in C++ with two modes: drive a set shape, or follow a line on the floor.",
     year: "2024",
     disciplines: ["Hardware", "Software"],
-    context: "Personal build",
-    role: "Build, soldering, programming, testing",
+    context: "Partner build",
+    role: "Build, soldering, programming, testing (with a partner)",
     tools: ["Arduino Uno", "C++", "IR sensors", "Perfboard", "Soldering iron"],
     skills: ["C++ / Arduino", "PWM motor control", "IR line sensing", "Soldering", "Perfboard layout", "Calibration testing"],
     cover: {
@@ -293,7 +302,7 @@ export const projects: Project[] = [
     },
     outcomes: [
       { value: "2", label: "driving modes: shapes and line following" },
-      { value: "2", label: "motors matched in software" },
+      { value: "< ½", label: "the original build time to rebuild after the first board was fried" },
       { value: "0", label: "parts replaced to fix the drift" },
     ],
     purpose: {
@@ -320,14 +329,22 @@ export const projects: Project[] = [
         body: "Two downward-facing IR sensors under the front read the floor. When one side sees the line, the code slows that side's motor to steer back over it.",
       },
     ],
-    challenge: {
-      problem: "Repeated test runs showed the rover wandering off its path: uneven motor output, gearbox slop and wheel friction meant equal power never gave equal speed.",
-      fix: "Calibrated each motor's PWM duty cycle, then adjusted turn timing and the movement sequences run by run until both sides matched and the shapes came out consistent.",
-    },
+    challenges: [
+      {
+        title: "Dead board, full restart",
+        problem: "Partway through the build the first Arduino was fried. The board was dead and the build had to start over.",
+        fix: "Started again from bare parts on a new board. Knowing the build the second time, we finished the full rebuild in less than half the time the first attempt had taken.",
+      },
+      {
+        title: "Drift",
+        problem: "Repeated test runs showed the rover wandering off its path: uneven motor output, gearbox slop and wheel friction meant equal power never gave equal speed.",
+        fix: "Calibrated each motor's PWM duty cycle, then adjusted turn timing and the movement sequences run by run until both sides matched and the shapes came out consistent.",
+      },
+    ],
     result: {
-      lead: "A rover that draws its shapes consistently and follows a line, on the same imperfect hardware it started with.",
+      lead: "A rover that draws its shapes consistently and follows a line, on the same imperfect motors and wheels it started with.",
     },
-    learned: "When the ideal parts aren't available, adapt the design instead of starting over. It also gave me a real feel for how friction and motor differences affect a physical system.",
+    learned: "Understanding a system well enough to rebuild it fast matters as much as building it right the first time. And when the parts aren't ideal, fix it in the design and the code.",
     next: [
       "Add wheel encoders for closed-loop speed control instead of fixed PWM offsets.",
       "Use PID steering in line-following mode for smoother, faster tracking.",
@@ -379,10 +396,13 @@ export const projects: Project[] = [
         body: "Built amortization models comparing alternative ODSP repayment schedules: principal reduction, timeline and cumulative interest under different rates and cash flows.",
       },
     ],
-    challenge: {
-      problem: "TFSA, RRSP and FHSA are taxed differently going in and coming out, so their balances can't be compared at face value.",
-      fix: "Modelled each account with its own tax treatment and the shift in marginal bracket over time, so the three could be compared on the same footing.",
-    },
+    challenges: [
+      {
+        title: "Unequal tax treatment",
+        problem: "TFSA, RRSP and FHSA are taxed differently going in and coming out, so their balances can't be compared at face value.",
+        fix: "Modelled each account with its own tax treatment and the shift in marginal bracket over time, so the three could be compared on the same footing.",
+      },
+    ],
     result: {
       lead: "A reusable model that turns each of these questions into numbers that can be compared side by side.",
     },

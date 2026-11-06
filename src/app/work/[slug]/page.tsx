@@ -61,7 +61,7 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
   const toc = [
     { id: "brief", label: "Brief", mark: "01" },
     { id: "process", label: "Process", mark: "02" },
-    { id: "failure-mode", label: "Failure mode", mark: "03" },
+    { id: "failure-mode", label: p.challenges.length > 1 ? "Failure modes" : "Failure mode", mark: "03" },
     { id: "outcome", label: "Outcome", mark: "04" },
     ...(p.next?.length ? [{ id: "rev-b", label: "Rev. B", mark: "05" }] : []),
     ...(p.interactive ? [{ id: "model", label: "Working model", mark: "◆" }] : []),
@@ -202,20 +202,30 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
               </ol>
             </Chapter>
 
-            <Chapter id="failure-mode" n="03" title="Failure mode · and the fix">
-              <div className="grid gap-px border border-line-2 bg-line-2 sm:grid-cols-2">
-                <div className="bg-paper p-6 sm:p-8">
-                  <p className="label flex items-center gap-2">
-                    <span className="inline-block h-2 w-2 border border-ink" aria-hidden /> Observed
-                  </p>
-                  <p className="mt-4 text-[17px] leading-[1.65] text-ink">{p.challenge.problem}</p>
-                </div>
-                <div className="bg-paper-2 p-6 sm:p-8">
-                  <p className="label flex items-center gap-2 !text-accent">
-                    <span className="inline-block h-2 w-2 bg-accent" aria-hidden /> Resolved
-                  </p>
-                  <p className="mt-4 text-[17px] leading-[1.65] text-ink">{p.challenge.fix}</p>
-                </div>
+            <Chapter id="failure-mode" n="03" title={p.challenges.length > 1 ? "Failure modes · and the fixes" : "Failure mode · and the fix"}>
+              <div className="space-y-6">
+                {p.challenges.map((c, i) => (
+                  <div key={c.title}>
+                    <p className="mb-3 flex items-baseline gap-3 text-[15px] font-medium">
+                      <span className="font-mono text-[11px] text-accent">FM-{i + 1}</span>
+                      {c.title}
+                    </p>
+                    <div className="grid gap-px border border-line-2 bg-line-2 sm:grid-cols-2">
+                      <div className="bg-paper p-6 sm:p-8">
+                        <p className="label flex items-center gap-2">
+                          <span className="inline-block h-2 w-2 border border-ink" aria-hidden /> Observed
+                        </p>
+                        <p className="mt-4 text-[17px] leading-[1.65] text-ink">{c.problem}</p>
+                      </div>
+                      <div className="bg-paper-2 p-6 sm:p-8">
+                        <p className="label flex items-center gap-2 !text-accent">
+                          <span className="inline-block h-2 w-2 bg-accent" aria-hidden /> Resolved
+                        </p>
+                        <p className="mt-4 text-[17px] leading-[1.65] text-ink">{c.fix}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </Chapter>
 
