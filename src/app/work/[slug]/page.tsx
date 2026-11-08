@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
-import { getProject, projects } from "@/content/projects";
+import { ArrowLeft, ArrowRight, ArrowUpRight, Download } from "lucide-react";
+import { getProject, projects, reportPdf } from "@/content/projects";
 import { Picture } from "@/components/Picture";
 import { Reveal } from "@/components/Reveal";
 import { Gallery } from "@/components/Gallery";
@@ -118,6 +118,17 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                 </dd>
               </div>
             </dl>
+            <a
+              href={reportPdf(p.slug)}
+              download
+              className="group mt-6 flex items-center justify-between gap-4 border border-ink px-4 py-3 text-sm font-medium transition-colors hover:bg-ink hover:text-paper"
+            >
+              <span className="flex items-center gap-3">
+                <Download className="h-4 w-4 text-accent" aria-hidden />
+                Download this report
+              </span>
+              <span className="font-mono text-[11px] text-muted transition-colors group-hover:text-paper/70">PDF</span>
+            </a>
             {p.links && (
               <div className="mt-6 flex flex-wrap gap-2">
                 {p.links.map((l) => (
@@ -216,6 +227,12 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                           <span className="inline-block h-2 w-2 border border-ink" aria-hidden /> Observed
                         </p>
                         <p className="mt-4 text-[17px] leading-[1.65] text-ink">{c.problem}</p>
+                        {c.cause && (
+                          <p className="mt-4 border-t border-line pt-4 text-[15px] leading-[1.65] text-ink-2">
+                            <span className="label mr-2">Cause</span>
+                            {c.cause}
+                          </p>
+                        )}
                       </div>
                       <div className="bg-paper-2 p-6 sm:p-8">
                         <p className="label flex items-center gap-2 !text-accent">
@@ -238,12 +255,16 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                   {para}
                 </p>
               ))}
-              {p.learned && (
-                <figure className="mt-12 bg-paper-2 p-6 sm:p-8">
-                  <figcaption className="label">Note to self</figcaption>
-                  <blockquote className="mt-4 font-serif text-[clamp(1.4rem,2.4vw,1.9rem)] italic leading-[1.3]">
-                    &ldquo;{p.learned}&rdquo;
+              {p.quote && (
+                <figure className="mt-12 border-l border-line-2 pl-6 sm:pl-8">
+                  <p className="label">Margin note</p>
+                  <blockquote className="mt-4 font-serif text-[clamp(1.5rem,2.6vw,2.1rem)] leading-[1.25] tracking-[-0.01em]">
+                    &ldquo;{p.quote.text}&rdquo;
                   </blockquote>
+                  <figcaption className="mt-4 font-mono text-[12px] text-muted">
+                    — {p.quote.by ?? "H.S."}
+                    {p.quote.source && <span className="italic">, {p.quote.source}</span>}
+                  </figcaption>
                 </figure>
               )}
             </Chapter>

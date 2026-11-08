@@ -38,11 +38,11 @@ export type Project = {
   /** What was done, in a few short steps. */
   approach: { heading: string; body: string }[];
   /** What went wrong and how it was solved. Real events only. */
-  challenges: { title: string; problem: string; fix: string }[];
+  challenges: { title: string; problem: string; cause?: string; fix: string }[];
   /** What it achieved. */
   result: { lead: string; body?: string[] };
-  /** One honest takeaway. */
-  learned?: string;
+  /** A margin note: a famous line that fits the project, or one of Haneet's own (no `by`). */
+  quote?: { text: string; by?: string; source?: string };
   /** What the next version would change. Forward-looking, not claims. */
   next?: string[];
   specs: [string, string][];
@@ -110,10 +110,10 @@ export const projects: Project[] = [
     result: {
       lead: "Clients got step-free access to their homes, on ramps at or below the code slope limit.",
       body: [
-        "Eight systems spanning 12 to 26 ft, from a tight switchback beside a house in August 2025 to a long straight run with a landing at a rural home in March 2026.",
+        "Eight systems spanning 12 to 26 ft, each close to a full day's work, from a tight switchback beside a house in August 2025 to a long straight run with a landing at a rural home in March 2026.",
       ],
     },
-    learned: "Engineering is judged by whether it works for the person using it, not by how it looks on the layout sheet.",
+    quote: { text: "A slope is just a number until someone has to push a wheelchair up it." },
     next: [
       "Model the site and the module layout in CAD before the first visit, so clearances and footing points are checked before anything is unloaded.",
       "Survey ground slope at every footing on the measuring visit, so leg heights can be preset instead of set by trial on site.",
@@ -132,7 +132,7 @@ export const projects: Project[] = [
     ],
     interactive: "ramp-calculator",
     gallery: [
-      { image: "ramps/layout-sheet", alt: "Printed plan view of a switchback ramp layout: 25.5 ft long, 9.8 ft wide, 36 inch target rise, 1:12 selected slope, 1:13 actual", caption: "Layout sheet, switchback install (Aug 2025). 36 in rise, 1:13 actual slope." },
+      { image: "ramps/layout-sheet", alt: "Printed plan view of a switchback ramp layout: two parallel runs of deck modules joined by turn platforms, 25.5 ft long and 9.8 ft wide", caption: "Layout sheet, switchback install (Aug 2025). Two runs folded into a 25.5 × 9.8 ft footprint." },
       { image: "ramps/switchback-frame", alt: "Aluminium ramp frame and support legs being assembled beside a house", caption: "Frame and legs going in on the switchback." },
       { image: "ramps/site-staging", alt: "Tool bags and flat-packed ramp boxes staged in a driveway", caption: "Modules and tools staged in install order." },
       { image: "ramps/frame-posts", alt: "Ramp support posts and landing frame set out in a field", caption: "Second install (Mar 2026): posts and landing frame." },
@@ -148,9 +148,9 @@ export const projects: Project[] = [
     year: "2026",
     disciplines: ["Hardware", "Software"],
     context: "Two-week project, finished in under one",
-    role: "Design, machining, wiring, input software",
-    tools: ["Raspberry Pi", "Python", "GPIO", "Drill mill"],
-    skills: ["Drill-mill machining", "Hole layout", "GPIO wiring", "Python", "Input debouncing", "Hardware–software debugging"],
+    role: "Design, machining, wiring, input configuration",
+    tools: ["Raspberry Pi", "GPIO", "GPIO-to-gamepad mapper", "Drill mill"],
+    skills: ["Drill-mill machining", "Hole layout", "GPIO wiring", "Pull-up inputs", "Debounce tuning", "Hardware–software debugging"],
     featured: true,
     cover: {
       image: "pi-joystick/joystick-and-pi",
@@ -171,7 +171,7 @@ export const projects: Project[] = [
     approach: [
       {
         heading: "Design around what was on hand",
-        body: "A door stop's spring became a self-centring stick. Metal nails became the four direction contacts: push the stick, it touches a nail, the circuit closes. No kit, no microswitches.",
+        body: "A door stop's spring became a self-centring stick, and four nails around it became the direction contacts. Electrically the spring is the common contact: touching a nail pulls that pin low, and a pull-up returns it high on release. Four normally-open switches, made from hardware-store parts.",
       },
       {
         heading: "Machine the housing",
@@ -182,32 +182,38 @@ export const projects: Project[] = [
         body: "Each direction and the fire button run to their own GPIO input. Up, down, left and right map to physical pins 36, 32, 35 and 12, and the Pi sits in its own wooden case beside the stick.",
       },
       {
-        heading: "Write the input layer",
-        body: "A Python script reads the pins and routes each one to a controller input the arcade front end understands, so the stick and button bind like any other gamepad.",
+        heading: "Configure the input layer",
+        body: "An existing GPIO-to-gamepad mapping tool presents the pins to the arcade front end as a standard controller. My part was configuration: mapping each header pin to a direction and binding the controls.",
+      },
+      {
+        heading: "Work in parallel",
+        body: "The input mapping was tested on the Pi with bare contacts while the housing was still being laid out, so the software was already proven by the time the stick was mounted. That is how a two-week build finished in under one.",
       },
     ],
     challenges: [
       {
         title: "Contact bounce",
-        problem: "Nail contacts bounce. One push of the stick registered as a burst of presses, so movement in game was jittery and laggy.",
-        fix: "Refined the debounce timing in the Python input script and cleaned up the signal routing until each push registered exactly once, with no visible lag.",
+        problem: "One push of the stick registered as a burst of presses, so movement in game was jittery and laggy.",
+        cause: "Metal-on-metal contacts don't close cleanly. Nail and spring chatter for a few milliseconds, and the Pi reads fast enough to see every chatter as a separate press.",
+        fix: "Tuned the debounce timing in the mapping tool's configuration, so a change only counts once the contact has held steady, and cleaned up the signal routing. Each push then registered exactly once, with no visible lag.",
       },
     ],
     result: {
       lead: "A fully working arcade controller, used to play Tetris and Aliens, finished in under a week on a two-week timeline.",
-      body: ["Every part of it, from the stick's spring to the input script, was designed, made or written by hand."],
+      body: ["Every physical part, from the stick's spring to the contacts and housing, was designed and made by hand, and the software layer was configured and tuned around it."],
     },
-    learned: "Small changes in the code had a butterfly effect on how the whole system responded. Hardware and software can't be debugged in isolation.",
+    quote: { text: "If you wish to make an apple pie from scratch, you must first invent the universe.", by: "Carl Sagan", source: "Cosmos" },
     next: [
       "Swap the nails for microswitches, so the contacts stop wearing and bouncing.",
       "Model the housing in SolidWorks and cut it on a CNC or 3D printer for a repeatable fit.",
       "Add a second action button for two-button games.",
+      "Replace the configured tool with my own Python input layer, for direct control over debouncing and timing.",
     ],
     specs: [
       ["Controller", "Raspberry Pi, cased"],
       ["Inputs", "4 directions + fire button"],
       ["Interface", "Direct GPIO (pins 36, 32, 35, 12)"],
-      ["Software", "Python input script"],
+      ["Software", "GPIO-to-gamepad mapper, tuned debounce"],
       ["Fabrication", "Drill-milled wooden housing"],
       ["Tested on", "Tetris and Aliens"],
     ],
@@ -243,7 +249,7 @@ export const projects: Project[] = [
     approach: [
       {
         heading: "Build around the ESP32",
-        body: "The ESP32 microcontroller has Wi-Fi and Bluetooth built in, so it handles the wireless link and the audio processing on one chip.",
+        body: "The ESP32 pairs a fast processor with a 2.4 GHz radio, so one chip samples the audio, packs it into packets and transmits it. Builds like ours talk over ESP-NOW, Espressif's peer-to-peer protocol: no router, no pairing.",
       },
       {
         heading: "Drive the speaker",
@@ -269,7 +275,7 @@ export const projects: Project[] = [
       lead: "Ours was the first team to finish a working model.",
       body: ["Press the button to talk, release it to listen. The short clip shows it on the bench."],
     },
-    learned: "Under a deadline, the design that's fastest to change beats the one that's neatest on paper.",
+    quote: { text: "The best is the enemy of the good.", by: "Voltaire" },
     next: [
       "Move the circuit to a soldered perfboard with a battery, so it works away from a laptop.",
       "Design a handheld enclosure in Fusion 360 and 3D-print it.",
@@ -318,7 +324,7 @@ export const projects: Project[] = [
       },
       {
         heading: "Solder the driver board",
-        body: "Hand-soldered the motor driver circuit on perfboard, so the Arduino's low-power pins can switch the current the motors actually need.",
+        body: "Hand-soldered an L293D dual H-bridge on perfboard, so the Uno's 5 V logic pins can switch motor current in either direction, with PWM on the enable pins setting each motor's speed.",
       },
       {
         heading: "Shape mode",
@@ -333,26 +339,29 @@ export const projects: Project[] = [
       {
         title: "Dead board, full restart",
         problem: "Partway through the build the first Arduino was fried. The board was dead and the build had to start over.",
-        fix: "Started again from bare parts on a new board. Knowing the build the second time, we finished the full rebuild in less than half the time the first attempt had taken.",
+        cause: "During testing the rover was hooked to a battery tester instead of its normal supply. The tester delivered far more than the circuit was built for: the motors ran away and the board burned out.",
+        fix: "Started again from bare parts on a new board, checking every connection and the supply polarity before each power-up, with motor power kept off the logic side. Knowing the build the second time, we finished the rebuild in less than half the original time.",
       },
       {
         title: "Drift",
-        problem: "Repeated test runs showed the rover wandering off its path: uneven motor output, gearbox slop and wheel friction meant equal power never gave equal speed.",
+        problem: "Over repeated test runs the rover wandered off its path, and the shapes didn't close.",
+        cause: "Equal PWM never gave equal speed: the two motors had different outputs, and gearbox slop and wheel friction added their own bias. With differential steering, any speed difference becomes a steady turn.",
         fix: "Calibrated each motor's PWM duty cycle, then adjusted turn timing and the movement sequences run by run until both sides matched and the shapes came out consistent.",
       },
     ],
     result: {
       lead: "A rover that draws its shapes consistently and follows a line, on the same imperfect motors and wheels it started with.",
     },
-    learned: "Understanding a system well enough to rebuild it fast matters as much as building it right the first time. And when the parts aren't ideal, fix it in the design and the code.",
+    quote: { text: "Failure is only the opportunity more intelligently to begin again.", by: "Henry Ford", source: "My Life and Work" },
     next: [
       "Add wheel encoders for closed-loop speed control instead of fixed PWM offsets.",
       "Use PID steering in line-following mode for smoother, faster tracking.",
+      "Give the motors a fused, separate supply to protect the logic board.",
     ],
     specs: [
       ["Controller", "Arduino Uno"],
       ["Drive", "Two DC gearmotors + caster"],
-      ["Electronics", "Hand-soldered perfboard driver"],
+      ["Electronics", "L293D H-bridge, hand-soldered perfboard"],
       ["Sensing", "2 × downward IR sensors"],
       ["Language", "C++"],
       ["Control", "PWM-calibrated, two modes"],
@@ -406,6 +415,7 @@ export const projects: Project[] = [
     result: {
       lead: "A reusable model that turns each of these questions into numbers that can be compared side by side.",
     },
+    quote: { text: "A guess compounds too." },
     next: [
       "Replace the single growth rate with a range of return scenarios.",
       "Rebuild the model in Python so scenarios can be swept automatically.",
@@ -421,6 +431,11 @@ export const projects: Project[] = [
 ];
 
 export const disciplines: Discipline[] = ["Field", "Hardware", "Software", "Finance"];
+
+/** Printable report for a project, split from the portfolio PDF (public/reports/<slug>.pdf). */
+export function reportPdf(slug: string) {
+  return `/reports/${slug}.pdf`;
+}
 
 export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);

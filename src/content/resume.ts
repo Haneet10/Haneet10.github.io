@@ -64,7 +64,7 @@ export const skills: SkillGroup[] = [
     title: "Programming & Software",
     note: "Languages and libraries",
     items: [
-      { name: "Python", detail: "Hardware I/O, data analysis, simulation", evidence: ["pi-joystick"] },
+      { name: "Python", detail: "Data analysis, simulation, scripting" },
       { name: "C++", detail: "Arduino and embedded", evidence: ["arduino-rover"] },
       { name: "MATLAB", detail: "Physics modelling" },
       { name: "Git & GitHub", detail: "Version control, documentation" },

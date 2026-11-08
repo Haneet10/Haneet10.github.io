@@ -53,12 +53,11 @@
     ]
   },
   "ramps/layout-sheet": {
-    "width": 3871,
-    "height": 2782,
+    "width": 945,
+    "height": 1140,
     "widths": [
       640,
-      1280,
-      1920
+      945
     ]
   },
   "ramps/switchback-frame": {

@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { ArrowUpRight, CornerDownLeft, Search } from "lucide-react";
 import { profile, sections } from "@/content/profile";
-import { projects } from "@/content/projects";
+import { projects, reportPdf } from "@/content/projects";
 import { scrollToId } from "@/lib/scroll";
 
 type Action = { id: string; group: string; label: string; hint: string; run: () => void; external?: boolean };
@@ -47,6 +47,15 @@ export function CommandMenu() {
         label: p.title,
         hint: String(i + 1).padStart(2, "0"),
         run: () => router.push(`/work/${p.slug}/`),
+      })),
+      { id: "d-portfolio", group: "Downloads", label: "Portfolio (PDF)", hint: `${profile.portfolioPages} pages`, external: true, run: () => window.open(profile.portfolioPdf, "_blank", "noopener") },
+      ...projects.map((p) => ({
+        id: `d-${p.slug}`,
+        group: "Downloads",
+        label: `${p.title} report (PDF)`,
+        hint: "PDF",
+        external: true,
+        run: () => window.open(reportPdf(p.slug), "_blank", "noopener"),
       })),
       { id: "l-email", group: "Contact", label: `Email ${profile.email}`, hint: "Mail", run: () => (window.location.href = `mailto:${profile.email}`) },
       { id: "l-linkedin", group: "Contact", label: "LinkedIn", hint: "Opens new tab", external: true, run: () => window.open(profile.links.linkedin, "_blank", "noopener") },
@@ -144,7 +153,7 @@ export function CommandMenu() {
                 ref={inputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Jump to a section, project or link…"
+                placeholder="Sections, project reports, downloads…"
                 aria-label="Search sections, projects and links"
                 aria-controls="command-list"
                 aria-activedescendant={filtered[cursor] ? `cmd-${filtered[cursor].id}` : undefined}
