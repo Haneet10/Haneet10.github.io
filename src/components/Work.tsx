@@ -5,6 +5,7 @@ import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 import { Picture } from "./Picture";
 import { ProjectIndex } from "./ProjectIndex";
+import { CadSection } from "./CadSection";
 
 export function Work() {
   const featured = projects.filter((p) => p.featured);
@@ -114,6 +115,7 @@ export function Work() {
       </div>
 
       <ProjectIndex />
+      <CadSection />
     </section>
   );
 }
