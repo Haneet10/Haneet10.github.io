@@ -53,12 +53,11 @@
     ]
   },
   "ramps/layout-sheet": {
-    "width": 3871,
-    "height": 2782,
+    "width": 945,
+    "height": 1140,
     "widths": [
       640,
-      1280,
-      1920
+      945
     ]
   },
   "ramps/switchback-frame": {
@@ -157,6 +156,118 @@
       640,
       1280,
       1920
+    ]
+  },
+  "cad/bird-feeder": {
+    "width": 1280,
+    "height": 960,
+    "widths": [
+      640,
+      1280
+    ]
+  },
+  "cad/coffee-mug-inside": {
+    "width": 1280,
+    "height": 800,
+    "widths": [
+      640,
+      1280
+    ]
+  },
+  "cad/coffee-mug-isometric": {
+    "width": 1280,
+    "height": 800,
+    "widths": [
+      640,
+      1280
+    ]
+  },
+  "cad/coffee-mug-name": {
+    "width": 1197,
+    "height": 748,
+    "widths": [
+      640,
+      1197
+    ]
+  },
+  "cad/cylinder-assembly-isometric": {
+    "width": 1280,
+    "height": 800,
+    "widths": [
+      640,
+      1280
+    ]
+  },
+  "cad/fun-letter-a": {
+    "width": 1280,
+    "height": 960,
+    "widths": [
+      640,
+      1280
+    ]
+  },
+  "cad/keychain-bottom-plate": {
+    "width": 1280,
+    "height": 960,
+    "widths": [
+      640,
+      1280
+    ]
+  },
+  "cad/keychain-clevis": {
+    "width": 1227,
+    "height": 920,
+    "widths": [
+      640,
+      1227
+    ]
+  },
+  "cad/keychain-spacer": {
+    "width": 1177,
+    "height": 883,
+    "widths": [
+      640,
+      1177
+    ]
+  },
+  "cad/keychain-top-plate": {
+    "width": 1027,
+    "height": 770,
+    "widths": [
+      640,
+      1027
+    ]
+  },
+  "cad/pillow-block-isometric": {
+    "width": 993,
+    "height": 745,
+    "widths": [
+      640,
+      993
+    ]
+  },
+  "cad/shaft-isometric": {
+    "width": 1280,
+    "height": 800,
+    "widths": [
+      640,
+      1280
+    ]
+  },
+  "cad/keychain-assembly-isometric": {
+    "width": 1280,
+    "height": 960,
+    "widths": [
+      640,
+      1280
+    ]
+  },
+  "cad/keychain-real": {
+    "width": 920,
+    "height": 690,
+    "widths": [
+      640,
+      920
     ]
   }
 }

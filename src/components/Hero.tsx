@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Download } from "lucide-react";
 import { profile } from "@/content/profile";
 import { NozzleFigure } from "./NozzleFigure";
 import { GitHubIcon, LinkedInIcon } from "./Icons";
@@ -49,6 +49,14 @@ export function Hero() {
                 Get in touch
                 <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
               </Link>
+              <a
+                href={profile.portfolioPdf}
+                download
+                className="group inline-flex h-11 items-center gap-2 border border-line-2 px-5 text-sm font-medium transition-colors hover:border-ink"
+              >
+                Portfolio PDF
+                <Download className="h-4 w-4 text-accent transition-transform group-hover:translate-y-0.5" aria-hidden />
+              </a>
               <span className="mx-1 hidden h-6 w-px bg-line sm:block" aria-hidden />
               <a href={profile.links.github} target="_blank" rel="noreferrer" aria-label="GitHub profile" className="grid h-11 w-11 place-items-center text-muted transition-colors hover:text-ink">
                 <GitHubIcon className="h-[18px] w-[18px]" />

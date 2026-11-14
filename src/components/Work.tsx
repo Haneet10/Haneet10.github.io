@@ -5,6 +5,7 @@ import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 import { Picture } from "./Picture";
 import { ProjectIndex } from "./ProjectIndex";
+import { CadSection } from "./CadSection";
 
 export function Work() {
   const featured = projects.filter((p) => p.featured);
@@ -26,7 +27,7 @@ export function Work() {
                 <Link
                   href={`/work/${p.slug}/`}
                   className={`group block lg:col-span-7 ${flip ? "lg:order-2" : ""}`}
-                  aria-label={`${p.title}: full project sheet`}
+                  aria-label={`${p.title}: full report`}
                 >
                   <div className="ticks relative aspect-[4/3] overflow-hidden bg-paper-2">
                     {p.cover && (
@@ -88,10 +89,15 @@ export function Work() {
                     ))}
                   </dl>
 
-                  <Link href={`/work/${p.slug}/`} className="group mt-8 inline-flex items-center gap-2 text-sm font-medium">
-                    <span className="link-underline">Full project sheet</span>
-                    <ArrowUpRight className="h-4 w-4 text-accent transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
-                  </Link>
+                  <div className="mt-8 flex flex-wrap gap-2">
+                    <Link
+                      href={`/work/${p.slug}/`}
+                      className="group inline-flex h-11 items-center gap-2 bg-ink px-5 text-sm font-medium text-paper transition-colors hover:bg-accent"
+                    >
+                      Read the full report
+                      <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
+                    </Link>
+                  </div>
                 </div>
               </div>
             </Reveal>
@@ -100,6 +106,7 @@ export function Work() {
       </div>
 
       <ProjectIndex />
+      <CadSection />
     </section>
   );
 }
