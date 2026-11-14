@@ -253,5 +253,21 @@
       640,
       1280
     ]
+  },
+  "cad/keychain-assembly-isometric": {
+    "width": 1280,
+    "height": 960,
+    "widths": [
+      640,
+      1280
+    ]
+  },
+  "cad/keychain-real": {
+    "width": 920,
+    "height": 690,
+    "widths": [
+      640,
+      920
+    ]
   }
 }

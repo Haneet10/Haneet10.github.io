@@ -87,14 +87,24 @@ export function CadSection() {
           return (
             <Reveal key={m.id} delay={0.04 * (mi % 3)} className={`flex flex-col bg-paper ${span[m.size]} ${m.size === "hero" ? "sm:col-span-2 lg:col-span-6" : ""}`}>
               {isGroup ? (
-                <div className="grid grid-cols-2 gap-px bg-line">
-                  {m.figures.map((f) => (
-                    <button key={f.image} type="button" onClick={() => show(f.image)} className="group relative text-left" aria-label={`Enlarge: ${m.title}, ${f.caption}`}>
-                      <Plate image={f.image} alt={f.alt} className="aspect-[4/3]" sizes="(min-width: 1024px) 25vw, 50vw" />
-                      <span className="label absolute bottom-2 left-2 bg-paper/90 px-1.5 py-0.5 !text-[10px] !text-ink">{f.caption}</span>
-                    </button>
-                  ))}
-                </div>
+                <>
+                  <div className="grid grid-cols-1 gap-px bg-line sm:grid-cols-2">
+                    {m.figures.slice(0, 2).map((f) => (
+                      <button key={f.image} type="button" onClick={() => show(f.image)} className="group relative text-left" aria-label={`Enlarge: ${m.title}, ${f.caption}`}>
+                        <Plate image={f.image} alt={f.alt} className="aspect-[4/3]" sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" />
+                        <span className="label absolute bottom-2 left-2 bg-paper/90 px-1.5 py-0.5 !text-[10px] !text-ink">{f.caption}</span>
+                      </button>
+                    ))}
+                  </div>
+                  <div className="grid grid-cols-4 gap-px border-t border-line bg-line">
+                    {m.figures.slice(2).map((f) => (
+                      <button key={f.image} type="button" onClick={() => show(f.image)} className="group relative text-left" aria-label={`Enlarge: ${m.title}, ${f.caption}`} title={f.caption}>
+                        <Plate image={f.image} alt={f.alt} className="aspect-[4/3]" sizes="(min-width: 1024px) 12vw, 25vw" />
+                      </button>
+                    ))}
+                  </div>
+                  <p className="label border-t border-line px-5 py-2 !text-[10px] sm:px-6">Parts: {m.figures.slice(2).map((f) => (f.caption ?? "").split(",")[0]).join(" · ")}</p>
+                </>
               ) : (
                 <>
                   <button

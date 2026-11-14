@@ -9,7 +9,7 @@ export type CadModel = {
   title: string;
   kind: "Assembly" | "Part" | "Just for fun";
   note: string;
-  /** First figure is the hero; the rest show as thumbnails. */
+  /** First figure is the hero; the rest show as thumbnails. The keychain shows its first two side by side (model vs. built). */
   figures: Figure[];
   /** Grid footprint on large screens. */
   size: "hero" | "wide" | "regular";
@@ -22,9 +22,11 @@ export const cadModels: CadModel[] = [
     id: "keychain",
     title: "Keychain",
     kind: "Assembly",
-    note: "Four parts: a clevis, a curved spacer, and two plates, one counterbored and one countersunk so the screw heads sit flush.",
+    note: "A gear held between two plates and linked to the split ring through a clevis. One plate is countersunk and the other counterbored so the screw heads sit flush. Each part was modelled on its own, assembled in SolidWorks, then made for real.",
     size: "hero",
     figures: [
+      { image: "cad/keychain-assembly-isometric", alt: "SolidWorks render of the assembled keychain: a purple gear between two steel plates, a clevis and a split ring", caption: "SolidWorks assembly" },
+      { image: "cad/keychain-real", alt: "Photo of the finished keychain on a marble counter: purple gear, aluminium plates, clevis and split ring", caption: "As built" },
       { image: "cad/keychain-clevis", alt: "SolidWorks render of a clevis: a cylindrical body with a flat-sided tang and cross holes", caption: "Clevis" },
       { image: "cad/keychain-spacer", alt: "SolidWorks render of a block spacer with a concave curved face and a through hole", caption: "Curved spacer" },
       { image: "cad/keychain-top-plate", alt: "SolidWorks render of a rounded plate with three countersunk holes", caption: "Top plate, countersunk" },
