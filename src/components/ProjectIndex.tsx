@@ -29,8 +29,8 @@ export function ProjectIndex() {
     <div className="mt-28 sm:mt-36">
       <div className="flex flex-col gap-6 border-b border-ink pb-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="label">Register</p>
-          <h3 className="mt-2 text-2xl font-medium tracking-tight">All projects</h3>
+          <p className="label">Register · {projects.length} reports</p>
+          <h3 className="mt-2 text-2xl font-medium tracking-tight">Project reports</h3>
         </div>
         <div role="tablist" aria-label="Filter projects by discipline" className="-mx-1 flex flex-wrap gap-1">
           {(["All", ...disciplines] as Filter[]).map((f) => {
@@ -75,13 +75,13 @@ export function ProjectIndex() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
-                className="border-b border-line"
+                className="flex items-center border-b border-line"
               >
                 <Link
                   href={`/work/${p.slug}/`}
                   onPointerEnter={(e) => e.pointerType === "mouse" && setHovered(p.slug)}
                   onFocus={() => setHovered(null)}
-                  className="group grid grid-cols-[3.5rem_1fr_auto] items-center gap-4 py-5 transition-colors sm:grid-cols-[3rem_1fr_11rem_4rem_1.5rem] sm:gap-6 sm:py-6"
+                  className="group grid min-w-0 flex-1 grid-cols-[3.5rem_1fr_auto] items-center gap-4 py-5 transition-colors sm:grid-cols-[3rem_1fr_11rem_4rem_1.5rem] sm:gap-6 sm:py-6"
                 >
                   <span className="relative hidden font-mono text-xs text-faint transition-colors group-hover:text-accent sm:block">
                     {String(idx).padStart(2, "0")}

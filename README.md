@@ -11,6 +11,7 @@ The personal portfolio of **Haneet Singh**, Mechanical Engineering (Co-op) at th
 - **Cover**: an interactive half-section of a rocket nozzle. Move across it and it computes the local Mach number, pressure and temperature for ideal isentropic flow, live.
 - **Key results**: four headline numbers under the cover, each linking to the work behind it.
 - **Work**: five projects. Each page reads like a drawing sheet: *Brief* (the problem), *Process* (how it was built, step by step), *Failure mode* (what went wrong and the fix), *Outcome*, and *Rev. B* (what the next version changes), then a spec sheet, photos and a *For engineers* section. Two pages have working calculators (ramp slope, loan amortization).
+- **Reports and download**: every project has a full report page. The printable portfolio (13 pages, résumé included, no phone number) downloads from the button on the cover (`public/reports/Haneet-Singh-Engineering-Portfolio.pdf`).
 - **Experience, Skills, Education, Contact**. Skills link to the projects that use them instead of showing made-up percentage bars.
 - **Navigation**: press ⌘K / Ctrl+K (or the *Jump to* button) to jump to any section, project or link. Wide screens also get a sheet index on the right edge, and project pages have an "On this sheet" contents list.
 
@@ -32,6 +33,8 @@ Everything you'd want to change is in `src/content/`:
 2. Add an entry per photo to `scripts/image-manifest.mjs`.
 3. Run `npm run images -- <that-folder>`. It writes resized WebP files to `public/images/` and strips all metadata, including GPS location.
 4. Add the project to `src/content/projects.ts`, referencing images as `"folder/name"`.
+
+**Updating the PDFs.** The printable portfolio is built from its own source (kept in the project files under `portfolio-print/`). Render it with the phone number removed and copy it to `public/reports/`.
 
 ## Running locally
 

@@ -22,8 +22,8 @@ export function Contact() {
             Have a project, a role or a question? <span className="font-serif font-normal italic text-muted">Let&apos;s talk.</span>
           </h2>
         </Reveal>
-        <Reveal delay={0.1} className="mt-14 grid gap-px border border-line-2 bg-line-2 lg:grid-cols-3">
-          <div className="bg-paper p-6 sm:p-8">
+        <Reveal delay={0.1} className="mt-14 grid gap-px border border-line-2 bg-line-2 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="bg-paper p-6 sm:col-span-2 sm:p-8 lg:col-span-1">
             <p className="label">Email</p>
             <a href={`mailto:${profile.email}`} className="mt-3 block break-all text-xl font-medium tracking-tight hover:text-accent sm:text-2xl">
               {profile.email}

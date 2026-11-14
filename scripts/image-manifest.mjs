@@ -7,7 +7,7 @@ export default [
   { file: "ramp-2__IMG_9039.jpg", slug: "ramps", name: "frame-posts" },
   { file: "ramp-2__IMG_9041.jpg", slug: "ramps", name: "module-sawhorse" },
   { file: "ramp-2__IMG_9038.jpg", slug: "ramps", name: "module-stack" },
-  { file: "ramp-1__IMG_7113.jpg", slug: "ramps", name: "layout-sheet", rotate: 270, crop: [0.02, 0.04, 0.98, 0.96], quality: 82, redact: [[0.795, 0.915, 0.985, 0.985]] },
+  { file: "ramp-1__IMG_7113.jpg", slug: "ramps", name: "layout-sheet", rotate: 270, crop: [0.268, 0.04, 0.74, 0.8], quality: 82 } // title block cropped out,
   { file: "ramp-1__IMG_7115.jpg", slug: "ramps", name: "switchback-frame" },
   { file: "ramp-1__IMG_7118.jpg", slug: "ramps", name: "site-staging", crop: [0, 0, 1, 0.82] },
   // ESP32 walkie-talkie

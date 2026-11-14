@@ -15,6 +15,9 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/haneet-singh-uw",
   },
   site: "https://haneet10.github.io",
+  /** Printable portfolio (web edition: no phone number, no résumé page). */
+  portfolioPdf: "/reports/Haneet-Singh-Engineering-Portfolio.pdf",
+  portfolioPages: 13,
   description:
     "Haneet Singh is a Mechanical Engineering (Co-op) student at the University of Waterloo. Field-installed accessibility systems, hand-built hardware prototypes and financial models.",
 } as const;
@@ -32,6 +35,7 @@ export const sections = [
   { id: "top", label: "Cover", sheet: "00" },
   { id: "about", label: "About", sheet: "01" },
   { id: "work", label: "Work", sheet: "02" },
+  { id: "cad", label: "SolidWorks models", sheet: "2B" },
   { id: "experience", label: "Experience", sheet: "03" },
   { id: "skills", label: "Skills", sheet: "04" },
   { id: "education", label: "Education", sheet: "05" },

@@ -48,6 +48,7 @@ export function CommandMenu() {
         hint: String(i + 1).padStart(2, "0"),
         run: () => router.push(`/work/${p.slug}/`),
       })),
+      { id: "d-portfolio", group: "Downloads", label: "Portfolio (PDF)", hint: `${profile.portfolioPages} pages`, external: true, run: () => window.open(profile.portfolioPdf, "_blank", "noopener") },
       { id: "l-email", group: "Contact", label: `Email ${profile.email}`, hint: "Mail", run: () => (window.location.href = `mailto:${profile.email}`) },
       { id: "l-linkedin", group: "Contact", label: "LinkedIn", hint: "Opens new tab", external: true, run: () => window.open(profile.links.linkedin, "_blank", "noopener") },
       { id: "l-github", group: "Contact", label: "GitHub", hint: "Opens new tab", external: true, run: () => window.open(profile.links.github, "_blank", "noopener") },
@@ -144,7 +145,7 @@ export function CommandMenu() {
                 ref={inputRef}
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Jump to a section, project or link…"
+                placeholder="Sections, project reports, downloads…"
                 aria-label="Search sections, projects and links"
                 aria-controls="command-list"
                 aria-activedescendant={filtered[cursor] ? `cmd-${filtered[cursor].id}` : undefined}
