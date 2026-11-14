@@ -7,7 +7,6 @@ import { usePathname } from "next/navigation";
 import { nav, profile } from "@/content/profile";
 import { ThemeToggle } from "./ThemeToggle";
 import { JumpButton } from "./JumpButton";
-import { Download } from "lucide-react";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -81,14 +80,6 @@ export function Header() {
           })}
           <span className="mx-2 h-5 w-px bg-line" aria-hidden />
           <JumpButton />
-          <a
-            href={profile.portfolioPdf}
-            download
-            className="group ml-1 hidden h-9 items-center gap-1.5 border border-line-2 px-3 text-[13px] text-ink-2 transition-colors hover:border-ink hover:text-ink lg:inline-flex"
-          >
-            <Download className="h-3.5 w-3.5 text-accent transition-transform group-hover:translate-y-0.5" aria-hidden />
-            Portfolio PDF
-          </a>
           <ThemeToggle />
         </nav>
 
@@ -139,12 +130,6 @@ export function Header() {
               <a href={profile.links.github} target="_blank" rel="noreferrer" className="hover:text-ink">GitHub</a>
               <a href={profile.links.linkedin} target="_blank" rel="noreferrer" className="hover:text-ink">LinkedIn</a>
               <a href={`mailto:${profile.email}`} className="hover:text-ink">Email</a>
-            </div>
-            <div className="shell mt-8">
-              <a href={profile.portfolioPdf} download className="flex items-center justify-between border border-ink px-4 py-4 text-base font-medium">
-                Download portfolio (PDF)
-                <Download className="h-4 w-4 text-accent" aria-hidden />
-              </a>
             </div>
           </motion.nav>
         )}

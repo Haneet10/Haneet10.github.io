@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, ArrowUpRight, Download } from "lucide-react";
-import { getProject, projects, reportPdf } from "@/content/projects";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { getProject, projects } from "@/content/projects";
 import { Picture } from "@/components/Picture";
 import { Reveal } from "@/components/Reveal";
 import { Gallery } from "@/components/Gallery";
@@ -118,17 +118,6 @@ export default async function ProjectPage({ params }: { params: Promise<Params> 
                 </dd>
               </div>
             </dl>
-            <a
-              href={reportPdf(p.slug)}
-              download
-              className="group mt-6 flex items-center justify-between gap-4 border border-ink px-4 py-3 text-sm font-medium transition-colors hover:bg-ink hover:text-paper"
-            >
-              <span className="flex items-center gap-3">
-                <Download className="h-4 w-4 text-accent" aria-hidden />
-                Download this report
-              </span>
-              <span className="font-mono text-[11px] text-muted transition-colors group-hover:text-paper/70">PDF</span>
-            </a>
             {p.links && (
               <div className="mt-6 flex flex-wrap gap-2">
                 {p.links.map((l) => (

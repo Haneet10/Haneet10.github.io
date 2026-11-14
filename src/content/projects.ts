@@ -432,11 +432,6 @@ export const projects: Project[] = [
 
 export const disciplines: Discipline[] = ["Field", "Hardware", "Software", "Finance"];
 
-/** Printable report for a project, split from the portfolio PDF (public/reports/<slug>.pdf). */
-export function reportPdf(slug: string) {
-  return `/reports/${slug}.pdf`;
-}
-
 export function getProject(slug: string) {
   return projects.find((p) => p.slug === slug);
 }

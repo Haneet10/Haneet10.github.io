@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { AnimatePresence, motion, useMotionValue, useSpring } from "motion/react";
-import { ArrowRight, Download } from "lucide-react";
-import { disciplines, projects, reportPdf, type Discipline } from "@/content/projects";
+import { ArrowRight } from "lucide-react";
+import { disciplines, projects, type Discipline } from "@/content/projects";
 import { getImage } from "@/lib/images";
 
 type Filter = "All" | Discipline;
@@ -105,15 +105,6 @@ export function ProjectIndex() {
                   <span className="hidden font-mono text-xs text-muted sm:block">{p.year}</span>
                   <ArrowRight className="h-4 w-4 text-faint transition-all group-hover:translate-x-0.5 group-hover:text-accent" aria-hidden />
                 </Link>
-                <a
-                  href={reportPdf(p.slug)}
-                  download
-                  aria-label={`Download the ${p.title} report (PDF)`}
-                  className="ml-3 inline-flex h-9 shrink-0 items-center gap-1.5 border border-line px-2.5 font-mono text-[11px] text-muted transition-colors hover:border-ink hover:text-ink sm:ml-6"
-                >
-                  <Download className="h-3.5 w-3.5" aria-hidden />
-                  PDF
-                </a>
               </motion.li>
             );
           })}

@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { ArrowUpRight, Download } from "lucide-react";
-import { projects, reportPdf } from "@/content/projects";
+import { ArrowUpRight } from "lucide-react";
+import { projects } from "@/content/projects";
 import { SectionHeading } from "./SectionHeading";
 import { Reveal } from "./Reveal";
 import { Picture } from "./Picture";
@@ -97,15 +97,6 @@ export function Work() {
                       Read the full report
                       <ArrowUpRight className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" aria-hidden />
                     </Link>
-                    <a
-                      href={reportPdf(p.slug)}
-                      download
-                      aria-label={`Download the ${p.title} report (PDF)`}
-                      className="group inline-flex h-11 items-center gap-2 border border-line-2 px-4 text-sm font-medium transition-colors hover:border-ink"
-                    >
-                      <Download className="h-4 w-4 text-accent transition-transform group-hover:translate-y-0.5" aria-hidden />
-                      PDF
-                    </a>
                   </div>
                 </div>
               </div>
